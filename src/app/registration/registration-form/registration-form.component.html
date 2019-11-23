@@ -1,29 +1,91 @@
 
-<form (ngSubmit)="onSubmit()" #registrationForm="ngForm" (ngSubmit)="registrationForm.form.valid && onSubmit()" #f="ngForm"  novalidate   class="text-center border border-light p-5">
+<form (ngSubmit)="onSubmit()" #registrationForm="ngForm" (ngSubmit)="onSubmit()"   class="text-center border border-light p-5">
   <p class="h4 mb-4">Sign up</p>
   <div class="form-row mb-4">
     <div class="col">
       <!-- First name -->
-      <input type="text" name="firstName" class="form-control" [(ngModel)]="firstName" placeholder="First name" required>
+      <input type="text"  required minlength="4" id="firstName" name="firstName" class="form-control " [ngClass]="{'is-invalid':fname.errors && registrationForm.submitted}" #fname="ngModel" [(ngModel)]="firstName"  placeholder="First name" >
+        <div  *ngIf="fname.invalid && (registrationForm.submitted)"
+         class="  message">
+
+          <div *ngIf="fname.errors.required">
+            First Name is required.
+          </div>
+
+          <div *ngIf="fname.errors.minlength">
+            First Name must be at least 4 characters long.
+          </div>
+
+        </div>
     </div>
     <div class="col">
       <!-- Last name -->
-      <input type="text" name="lastName" class="form-control" [(ngModel)]="lastName"placeholder="Last name" required>
+      <input type="text"  required minlength="4" id="lastName" name="lastName" class="form-control " [ngClass]="{'is-invalid':lname.errors && registrationForm.submitted}" #lname="ngModel" [(ngModel)]="lastName"  placeholder="Last name" >
+      <div  *ngIf="lname.errors && (registrationForm.submitted)"
+            class="  message">
+
+        <div *ngIf="lname.errors.required">
+          Last Name is required.
+        </div>
+
+
+
+      </div>
     </div>
+
   </div>
 
   <!-- E-mail -->
-  <input type="email" name="email" class="form-control mb-4" [(ngModel)]="email"placeholder="E-mail" required>
+  <div class="mb-4">
+  <input type="text" name="email" class="form-control " [(ngModel)]="email"placeholder="E-mail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  #emailaddress="ngModel">
+    <div  *ngIf="emailaddress.invalid && (registrationForm.submitted)"
+          class="  message">
 
+      <div *ngIf="emailaddress.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="emailaddress.errors.pattern">
+        This is not a valid email address.
+      </div>
+    </div>
+  </div>
   <!-- Password -->
-  <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Password"  required>
-  <small name="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-    At least 8 characters
-  </small>
-  <input type="password" name="password" class="form-control mb-4" [(ngModel)]="password" placeholder="Confirm Password"  required>
+  <div class="mb-4">
+  <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Password"  minlength="8" #pass="ngModel" required>
+    <div  *ngIf="pass.invalid && (registrationForm.submitted)"
+          class="  message">
 
+      <div *ngIf="pass.errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="pass.errors.minlength">
+        Password must contains at least 8 characters
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+  <input type="password" name="password" class="form-control" [(ngModel)]="confirmPassword" placeholder="Confirm Password"  #confirmpass="ngModel" required>
+    <div  *ngIf="confirmPassword != password && (registrationForm.submitted)"
+          class="  message">
+
+      <div >
+        The 2 passwords are not identical.
+      </div>
+
+    </div>
+
+</div>
   <!-- Phone number -->
-  <input type="text" name="phoneNumber" class="form-control mb-4" [(ngModel)]="phoneNumber"placeholder="Phone number" required>
+  <div class="mb-4">
+    <input type="number" name="phoneNumber" class="form-control mb-4" [(ngModel)]="phoneNumber" placeholder="Phone number" length="8" required #phone="ngModel">
+    <div *ngIf="  phoneNumber.toString().length != 8 && registrationForm.submitted" class = "message">
+      <div>
+        phone number length must be 8 numbers
+      </div>
+    </div>
+
+
+  </div>
   <input type="date" name="birthday" class="form-control mb-4"[(ngModel)]="birthday" required>
   <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)" class="form-control mb-4">
 
