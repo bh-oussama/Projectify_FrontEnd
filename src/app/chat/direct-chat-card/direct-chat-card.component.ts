@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-direct-chat-card',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./direct-chat-card.component.css']
 })
 export class DirectChatCardComponent implements OnInit {
+  @Input() contact: { name: string, pic: string, lastMessage: string, };
 
   constructor() { }
 
   ngOnInit() {
+  
   }
 
 }
