@@ -1,0 +1,25 @@
+.message {
+  border-radius: 10px;
+  height: fit-content;
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.849);
+  width: fit-content;
+  margin: 5px;
+}
+.sender {
+  max-width: 45%;
+  float: left;
+  clear: both;
+  background-color: #7da18d;
+  text-align: left;
+}
+.receiver {
+  max-width: 45%;
+  margin-left: 55%;
+  float: right;
+  clear: both;
+  height: fit-content;
+  text-align: center;
+  align-self: flex-end;
+  background-color: #bee7cd;
+}

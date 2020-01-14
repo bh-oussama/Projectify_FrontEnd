@@ -1,0 +1,15 @@
+<div class="header d-flex flex-row">
+  <div class=" ">
+    <img class="rounded-image " src="https://bit.ly/380UGUu" />
+  </div>
+  <div class="name-box  ">
+    Foulen Ben Foulen
+  </div>
+</div>
+<hr />
+<div class="messages-container">
+  <app-message-component
+    *ngFor="let message of messages"
+    [message]="message"
+  ></app-message-component>
+</div>

@@ -1,40 +1,41 @@
-body,html{
+body,
+html {
   height: 100%;
   margin: 0;
-  background: #7F7FD5;
-  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
-  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+  background: #7f7fd5;
+  background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
-.contacts{
+.contacts {
   list-style: none;
   padding: 0;
 }
-.contacts li{
+.contacts li {
   width: 100% !important;
   padding: 5px 10px;
   margin-bottom: 15px !important;
 }
 
-
-
-@media(max-width: 576px){
-  .contacts_card{
+@media (max-width: 576px) {
+  .contacts_card {
     margin-bottom: 15px !important;
-  }}
-.search{
-  border-radius: 15px 15px 15px 15px ;
-  background-color: rgba(0,0,0,0.3) ;
-  border:0 ;
-  color:white ;
+    overflow-y: scroll;
+  }
 }
-.search:focus{
-  box-shadow:none !important;
-  outline:0px !important;
+.search {
+  border-radius: 15px 15px 15px 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 0;
+  color: white;
 }
-.search_btn{
-  border-radius: 15px 15px 15px 15px ;
-  background-color: rgba(0,0,0,0.3) !important;
-  border:0 !important;
+.search:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.search_btn {
+  border-radius: 15px 15px 15px 15px;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border: 0 !important;
   color: white !important;
   cursor: pointer;
 }
