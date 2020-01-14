@@ -2,9 +2,7 @@
   <div class=" ">
     <img class="rounded-image " src="https://bit.ly/380UGUu" />
   </div>
-  <div class="name-box  ">
-    Foulen Ben Foulen
-  </div>
+  <div class="name-box  "></div>
 </div>
 <hr />
 <div class="messages-container" #messagescontainer id="messagescontainer">
@@ -31,6 +29,7 @@
       class="write_msg"
       [(ngModel)]="messageToSend"
       ng-model="form.message"
+      autocomplete="off"
     />
 
     <button class="msg_send_btn" type="submit" [disabled]="sendform.invalid">

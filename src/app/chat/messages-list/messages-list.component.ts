@@ -1,7 +1,7 @@
 import { element } from "protractor";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Message } from "../../../models/message";
-import { DatePipe } from "@angular/common";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-messages-list",
@@ -10,11 +10,18 @@ import { DatePipe } from "@angular/common";
 })
 export class MessagesListComponent implements OnInit {
   messageToSend: string;
-  messages: Message[];
+  messages: Message[] = [];
+  receiver: string = "";
   dividedMessages: { date: string; messages: Message[] }[] = [];
   id: string = "1";
   dates: string[];
-  constructor() {}
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe(param => {
+      this.receiver = param.params["id"];
+      this.ngOnInit();
+    });
+  }
+
   divideMessages() {
     var temp: { date: string; messages: Message[] }[] = [];
     this.messages.map((m, i) => {
@@ -31,29 +38,44 @@ export class MessagesListComponent implements OnInit {
     this.dividedMessages = temp;
     setTimeout(this.scrollToBottom, 100);
   }
-
-  ngOnInit() {
-    this.dividedMessages;
-    this.dates = [];
+  getMessages() {
     this.messages = [
-      new Message("hi man how are you doing?", "12/8/19", "2"),
-      new Message("fine , thnx", "12/8/19", "1"),
-      new Message("what about you ", "12/8/19", "1"),
+      new Message("hi man how are you doing?", "12/8/19", "2", "1"),
+      new Message("fine , thnx", "12/8/19", "1", "3"),
+      new Message("what about you ", "12/8/19", "1", "3"),
       new Message(
         "Actually I am doing great I have just got promoted and that made me so happy?",
         "12/8/19",
-        "2"
+        "2",
+        "1"
       ),
-      new Message("hi man how are you doing?", "12/8/19", "2"),
-      new Message("hi man how are you doing?", "12/8/19", "1"),
-      new Message("hi man how are you doing?", "12/8/19", "2"),
-      new Message("hi man how are you doing?", "13/8/19", "1"),
-      new Message("hi man how are you doing?", "13/8/19", "1"),
-      new Message("hi man how are you doing?", "13/8/19", "1"),
-      new Message("hi man how are you doing?", "13/8/19", "1"),
-      new Message("hi man how are you doing?", "14/8/19", "2")
+      new Message("hi man how are you doing?", "12/8/19", "2", "1"),
+      new Message("hi man how are you doing?", "12/8/19", "1", "2"),
+      new Message("hi man how are you doing?", "12/8/19", "2", "1"),
+      new Message("hi man how are you doing?", "13/8/19", "1", "2"),
+      new Message("hi man how are you doing?", "13/8/19", "1", "4"),
+      new Message("hi man how are you doing?", "13/8/19", "1", "3"),
+      new Message("hi man how are you doing?", "13/8/19", "1", "3"),
+      new Message("hi man how are you doing?", "14/8/19", "2", "1"),
+      new Message("hi man how are you doing?", "14/8/19", "3", "1"),
+      new Message("hi man how are you doing?", "14/8/19", "4", "1"),
+      new Message("hi man how are you doing?", "14/8/19", "3", "1"),
+      new Message("hi man how are you doing?", "14/8/19", "3", "1"),
+      new Message("hi man how are you doing?", "14/8/19", "3", "1"),
+      new Message("hi man how are you doing?", "14/8/19", "3", "1")
     ];
-
+    this.messages = this.messages.filter(m => {
+      return (
+        (m.id_sender === this.receiver && m.id_receiver == this.id) ||
+        (m.id_sender === this.id && m.id_receiver == this.receiver)
+      );
+    });
+    console.log("hi");
+  }
+  ngOnInit() {
+    this.dividedMessages;
+    this.dates = [];
+    this.getMessages();
     this.divideMessages();
     console.log(this.dividedMessages);
   }
@@ -76,11 +98,11 @@ export class MessagesListComponent implements OnInit {
     var msg = new Message(
       this.messageToSend,
       dd + "/" + mm + "/" + yy,
-      this.id
+      this.id,
+      this.receiver
     );
     this.messages.push(msg);
     this.divideMessages();
     this.messageToSend = "";
-    console.log("aa");
   }
 }

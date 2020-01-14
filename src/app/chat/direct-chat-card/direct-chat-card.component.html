@@ -1,15 +1,14 @@
-<div class="container container-fluid">
+<button class="container container-fluid" type="button" (click)="navigate()">
   <div class="row " style="margin-top: 10px">
     <div class="col-sm-2 " align="left">
-      <img
-        src={{contact.pic}}>
+      <img src="{{ contact.pic }}" />
     </div>
 
     <div align="right" class="col-sm-10 ">
-      <div class="name" align="left"> {{contact.name}}</div>
-      <div class="message" align="left">{{contact.lastMessage}}</div>
+      <div class="name" align="left">{{ contact.name }}</div>
+      <div class="message" align="left">
+        {{ contact.lastMessage }}
+      </div>
     </div>
   </div>
-
-
-</div>
+</button>
