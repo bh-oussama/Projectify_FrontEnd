@@ -6,19 +6,26 @@
   align-items: end;
   height: inherit;
   overflow-y: scroll;
+  height: 75vh;
+  overflow-anchor: auto;
+}
+.messages-container::-webkit-scrollbar {
+  display: none;
 }
 .header {
-  background-color: ;
+  font-size: 14px;
+
   width: 100%;
-  height: 10%;
+  height: 10vh;
   max-height: 10%;
 }
 .rounded-image {
   border-radius: 50%;
-  height: 75px;
+  height: auto;
+  max-height: 10vh;
 }
 .name-box {
-  text-align: center;
+  text-align: left;
   width: fit-content;
   font-size: medium;
   color: black;
@@ -27,25 +34,28 @@
   padding-bottom: 20px;
   margin-left: 5px;
 }
-.left {
-  text-align: left;
-  align-self: flex-start;
+.type_msg {
+  border-top: 1px solid #c4c4c4;
+  position: relative;
 }
-.right {
-  text-align: right;
-  align-self: flex-end;
+.msg_send_btn {
+  background: #3ac48a none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
 }
-.chatbot-container .text {
-  background: #f1f1f1;
-  border-radius: 50px;
-  display: inline;
-  padding: 10px;
-  margin-bottom: -20px;
-}
-.chatbot-container .message-container {
-  display: flex;
-  flex-direction: column;
-  height: 80%;
-  overflow-y: auto;
-  justify-content: flex-start;
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
 }

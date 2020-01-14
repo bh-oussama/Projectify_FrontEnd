@@ -2,9 +2,6 @@ body,
 html {
   height: 100%;
   margin: 0;
-  background: #7f7fd5;
-  background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
 .contacts {
   list-style: none;
@@ -15,13 +12,15 @@ html {
   padding: 5px 10px;
   margin-bottom: 15px !important;
 }
-
-@media (max-width: 576px) {
-  .contacts_card {
-    margin-bottom: 15px !important;
-    overflow-y: scroll;
-  }
+.scrollable {
+  overflow-y: scroll;
+  height: 100vh;
+  overflow-x: hidden;
 }
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
 .search {
   border-radius: 15px 15px 15px 15px;
   background-color: rgba(0, 0, 0, 0.3);

@@ -1,58 +1,47 @@
-<div class="card contacts_card">
-  <div align="right" class="contacts_card" style="margin-top: 20px;margin-bottom: 10px">
+<div class=" contacts_card scrollable">
+  <div
+    align="right"
+    class="contacts_card"
+    style="margin-top: 20px;margin-bottom: 10px"
+  >
     +New conversation
   </div>
   <div class="contacts_card">
     <div class="card-header">
       <div class="input-group ">
-        <input type="text" placeholder="Search..." name="" class="form-control search">
+        <input
+          type="text"
+          placeholder="Search..."
+          name=""
+          class="form-control search"
+        />
         <div class="input-group-append">
-          <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+          <span class="input-group-text search_btn"
+            ><i class="fas fa-search"></i
+          ></span>
         </div>
-
       </div>
     </div>
-    <div style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle" class=" row ">
-      <div class="col-sm" align="center" >
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row "
+    >
+      <div class="col-sm" align="center">
         <div style="background-color: black;height: 2px;"></div>
       </div>
 
-
-      <div style="font-size: 16px;" align="center" class="col-sm">Group chat</div>
+      <div style="font-size: 16px;" align="center" class="col-sm">
+        Group chat
+      </div>
       <div class="col-sm" align="center" style="height:100%">
         <div style="background-color: black;height: 2px;"></div>
       </div>
-
     </div>
 
-    <div style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle" class=" row ">
-      <div class="col-sm" align="center" style="height:100% ">
-        <div style="background-color: black;height: 2px;"></div>
-      </div>
-<div class="col-sm"></div>
-
-      <div class="col-sm" align="center" style="">
-        <div style="background-color: black;height: 2px;"></div>
-      </div>
-
-    </div>
-    <app-group-card *ngFor="let group of groupContacts ;" [groupContact]= "group"></app-group-card>
-
-
-    <div style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle" class=" row align-middle">
-      <div class="col-sm" align="center" style="height:100% ">
-        <div style="background-color: black;height: 2px;"></div>
-      </div>
-
-
-      <div style="font-size: 16px;vertical-align:top" align="center" class="col-sm">Direct chat</div>
-      <div class="col-sm" align="center" style="height:100%">
-        <div style="background-color: black;height: 2px;"></div>
-      </div>
-
-    </div>
-
-    <div style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle" class=" row ">
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row "
+    >
       <div class="col-sm" align="center" style="height:100% ">
         <div style="background-color: black;height: 2px;"></div>
       </div>
@@ -61,8 +50,48 @@
       <div class="col-sm" align="center" style="">
         <div style="background-color: black;height: 2px;"></div>
       </div>
-
     </div>
-    <app-direct-chat-card  *ngFor="let contact of contacts ;" [contact]="contact"></app-direct-chat-card>
+    <app-group-card
+      *ngFor="let group of groupContacts"
+      [groupContact]="group"
+    ></app-group-card>
+
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row align-middle"
+    >
+      <div class="col-sm" align="center" style="height:100% ">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+
+      <div
+        style="font-size: 16px;vertical-align:top"
+        align="center"
+        class="col-sm"
+      >
+        Direct chat
+      </div>
+      <div class="col-sm" align="center" style="height:100%">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+    </div>
+
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row "
+    >
+      <div class="col-sm" align="center" style="height:100% ">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+      <div class="col-sm"></div>
+
+      <div class="col-sm" align="center" style="">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+    </div>
+    <app-direct-chat-card
+      *ngFor="let contact of contacts"
+      [contact]="contact"
+    ></app-direct-chat-card>
   </div>
 </div>
