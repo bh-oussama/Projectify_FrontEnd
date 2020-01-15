@@ -11,6 +11,7 @@ import { GroupCardComponent } from "./chat/group-card/group-card.component";
 import { DirectChatCardComponent } from "./chat/direct-chat-card/direct-chat-card.component";
 import { MessagesListComponent } from "./chat/messages-list/messages-list.component";
 import { MessageComponentComponent } from "./chat/message-component/message-component.component";
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MessageComponentComponent } from "./chat/message-component/message-comp
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    FormsModule
+    FormsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

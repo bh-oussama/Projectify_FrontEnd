@@ -1,25 +1,37 @@
 <div class=" contacts_card scrollable">
   <div
-    align="right"
-    class="contacts_card"
-    style="margin-top: 20px;margin-bottom: 10px"
+    style="flex-direction: row-reverse; align-items: center; height: fit-content;"
+    style="margin-top: 10px;margin-bottom: 10px"
   >
-    +New conversation
+    <ng-multiselect-dropdown
+      [placeholder]="'new conversation'"
+      [data]="availableContacts"
+      [(ngModel)]="selectedItems"
+      [settings]="dropdownSettings"
+      (onSelect)="onItemSelect($event)"
+      (onSelectAll)="onSelectAll($event)"
+      align="right"
+      class="new-conv"
+      [disabled]="disabled"
+    >
+    </ng-multiselect-dropdown>
+    <div
+      style="float: right;margin-top: 7px;height:100%; background-color:white ; font-size: 20px;"
+      (click)="createConv()"
+    >
+      create
+    </div>
   </div>
   <div class="contacts_card">
-    <div class="card-header">
-      <div class="input-group ">
-        <input
-          type="text"
-          placeholder="Search..."
-          name=""
-          class="form-control search"
-        />
-        <div class="input-group-append">
-          <span class="input-group-text search_btn"
-            ><i class="fas fa-search"></i
-          ></span>
-        </div>
+    <div class="input-group ">
+      <input
+        type="text"
+        placeholder="Search..."
+        name=""
+        class="form-control "
+      />
+      <div class="input-group-append">
+        <button class="input-group-text "><i class="fad fa-search"></i></button>
       </div>
     </div>
     <div
