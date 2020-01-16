@@ -17,24 +17,18 @@ export class ContactListComponent implements OnInit {
     lastMessage: string;
     id: string;
   }[];
-  availableContacts: Array;
+  availableContacts: Array<{ item_id: number; item_text: string }>;
   dropdownSettings: {
     singleSelection: boolean;
-    idField: number;
-    selectAllText: string;
-    unSelectAllText: string;
+
     allowSearchFilter: boolean;
-    closeDropDownOnSelection: any;
   };
   constructor() {}
 
   ngOnInit() {
     this.dropdownSettings = {
       singleSelection: true,
-      idField: "item_id",
-      textField: "item_text",
-      selectAllText: "Select All",
-      unSelectAllText: "UnSelect All"
+      allowSearchFilter: true
     };
     this.availableContacts = [
       { item_id: 5, item_text: "mohamed salah" },
