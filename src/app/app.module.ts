@@ -12,7 +12,11 @@ import { DirectChatCardComponent } from "./chat/direct-chat-card/direct-chat-car
 import { MessagesListComponent } from "./chat/messages-list/messages-list.component";
 import { MessageComponentComponent } from "./chat/message-component/message-component.component";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
-
+import { ProjectsPageComponent } from "./projects/projects-page/projects-page.component";
+import { StatsCardComponent } from "./projects/projects-page/stats-card/stats-card.component";
+import { HeaderStaticsComponent } from "./projects/projects-page/header-statics/header-statics.component";
+import { OdometerModule } from "ng-odometer";
+import { Ng2OdometerModule } from "ng2-odometer";
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +26,15 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
     GroupCardComponent,
     DirectChatCardComponent,
     MessagesListComponent,
-    MessageComponentComponent
+    MessageComponentComponent,
+    ProjectsPageComponent,
+    StatsCardComponent,
+    HeaderStaticsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    Ng2OdometerModule.forRoot(),
     AngularFontAwesomeModule,
     FormsModule,
     NgMultiSelectDropDownModule.forRoot()
