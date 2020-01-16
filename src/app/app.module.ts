@@ -17,6 +17,9 @@ import { StatsCardComponent } from "./projects/projects-page/stats-card/stats-ca
 import { HeaderStaticsComponent } from "./projects/projects-page/header-statics/header-statics.component";
 import { OdometerModule } from "ng-odometer";
 import { Ng2OdometerModule } from "ng2-odometer";
+import { GraphComponent } from "./projects/projects-page/graph/graph.component";
+import { ChartsModule } from "ng2-charts";
+import { TeamCardComponent } from './projects/projects-page/team-card/team-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,9 @@ import { Ng2OdometerModule } from "ng2-odometer";
     MessageComponentComponent,
     ProjectsPageComponent,
     StatsCardComponent,
-    HeaderStaticsComponent
+    HeaderStaticsComponent,
+    GraphComponent,
+    TeamCardComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { Ng2OdometerModule } from "ng2-odometer";
     Ng2OdometerModule.forRoot(),
     AngularFontAwesomeModule,
     FormsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
