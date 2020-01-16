@@ -1,0 +1,109 @@
+<div class=" contacts_card scrollable">
+  <div
+    style="flex-direction: row-reverse; align-items: center; height: fit-content;"
+    style="margin-top: 10px;margin-bottom: 10px"
+  >
+    <ng-multiselect-dropdown
+      [placeholder]="'new conversation'"
+      [data]="availableContacts"
+      [(ngModel)]="selectedItems"
+      [settings]="dropdownSettings"
+      (onSelect)="onItemSelect($event)"
+      (onSelectAll)="onSelectAll($event)"
+      align="right"
+      class="new-conv"
+      [disabled]="disabled"
+    >
+    </ng-multiselect-dropdown>
+    <div
+      style="float: right;margin-top: 7px;height:100%; background-color:white ; font-size: 20px;"
+      (click)="createConv()"
+    >
+      create
+    </div>
+  </div>
+  <div class="contacts_card">
+    <div class="input-group ">
+      <input
+        type="text"
+        placeholder="Search..."
+        name=""
+        class="form-control "
+      />
+      <div class="input-group-append">
+        <button class="input-group-text "><i class="fad fa-search"></i></button>
+      </div>
+    </div>
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row "
+    >
+      <div class="col-sm" align="center">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+
+      <div style="font-size: 16px;" align="center" class="col-sm">
+        Group chat
+      </div>
+      <div class="col-sm" align="center" style="height:100%">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+    </div>
+
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row "
+    >
+      <div class="col-sm" align="center" style="height:100% ">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+      <div class="col-sm"></div>
+
+      <div class="col-sm" align="center" style="">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+    </div>
+    <app-group-card
+      *ngFor="let group of groupContacts"
+      [groupContact]="group"
+    ></app-group-card>
+
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row align-middle"
+    >
+      <div class="col-sm" align="center" style="height:100% ">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+
+      <div
+        style="font-size: 16px;vertical-align:top"
+        align="center"
+        class="col-sm"
+      >
+        Direct chat
+      </div>
+      <div class="col-sm" align="center" style="height:100%">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+    </div>
+
+    <div
+      style="margin-top: 20px;margin-bottom   : 20px;vertical-align: middle"
+      class=" row "
+    >
+      <div class="col-sm" align="center" style="height:100% ">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+      <div class="col-sm"></div>
+
+      <div class="col-sm" align="center" style="">
+        <div style="background-color: black;height: 2px;"></div>
+      </div>
+    </div>
+    <app-direct-chat-card
+      *ngFor="let contact of contacts"
+      [contact]="contact"
+    ></app-direct-chat-card>
+  </div>
+</div>

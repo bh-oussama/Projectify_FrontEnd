@@ -1,0 +1,61 @@
+.messages-container {
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  align-items: end;
+  height: inherit;
+  overflow-y: scroll;
+  height: 75vh;
+  overflow-anchor: auto;
+}
+.messages-container::-webkit-scrollbar {
+  display: none;
+}
+.header {
+  font-size: 14px;
+
+  width: 100%;
+  height: 10vh;
+  max-height: 10%;
+}
+.rounded-image {
+  border-radius: 50%;
+  height: auto;
+  max-height: 10vh;
+}
+.name-box {
+  text-align: left;
+  width: fit-content;
+  font-size: medium;
+  color: black;
+  vertical-align: middle;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 5px;
+}
+.type_msg {
+  border-top: 1px solid #c4c4c4;
+  position: relative;
+}
+.msg_send_btn {
+  background: #3ac48a none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
+}

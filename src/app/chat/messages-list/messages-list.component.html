@@ -1,0 +1,39 @@
+<div class="header d-flex flex-row">
+  <div class=" ">
+    <img class="rounded-image " src="https://bit.ly/380UGUu" />
+  </div>
+  <div class="name-box  "></div>
+</div>
+<hr />
+<div class="messages-container" #messagescontainer id="messagescontainer">
+  <div *ngFor="let item of dividedMessages; let i = index">
+    <div
+      style="width: 100%; text-align: center; position: absolute;
+    "
+    >
+      {{ item.date }}
+    </div>
+    <app-message-component
+      *ngFor="let message of dividedMessages[i].messages"
+      [message]="message"
+    ></app-message-component>
+  </div>
+</div>
+<form class="type_msg" #sendform="ngForm" (ngSubmit)="sendMessage()">
+  <div class="input_msg_write">
+    <input
+      required
+      name="message"
+      #fmsg="ngModel"
+      type="text"
+      class="write_msg"
+      [(ngModel)]="messageToSend"
+      ng-model="form.message"
+      autocomplete="off"
+    />
+
+    <button class="msg_send_btn" type="submit" [disabled]="sendform.invalid">
+      <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    </button>
+  </div>
+</form>

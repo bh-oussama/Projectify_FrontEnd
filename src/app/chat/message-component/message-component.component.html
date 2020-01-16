@@ -1,0 +1,11 @@
+<div>
+  <div
+    [ngClass]="{
+      sender: !isReceiver,
+      receiver: isReceiver
+    }"
+    class="message"
+  >
+    {{ message.body }}
+  </div>
+</div>
