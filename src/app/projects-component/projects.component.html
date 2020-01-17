@@ -3,9 +3,12 @@
   <button class="btn_add_project btn btn-success" (click)="displayProjectCreationPopup()">New Project</button>
 </div>
 <div style="overflow: hidden; overflow-y: scroll; height: 50vh;width: 365px">
-  <div style="padding: 5px; height: 76px;" *ngFor="let a of [1,2,3,4,1,123,32,2]">
+  <div style="padding: 5px; height: 76px;" *ngFor="let p of projects">
     <div>
-      <app-basic-project-ticket-component></app-basic-project-ticket-component>
+      <app-basic-project-ticket-component [projectName]="p.projectName"
+                                          [projectDescription]="p.projectDescription"
+                                          [projectID]="p.projectID"
+      ></app-basic-project-ticket-component>
     </div>
   </div>
 </div>

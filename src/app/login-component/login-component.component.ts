@@ -5,6 +5,7 @@ import {Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../Services/user.service';
 import {first} from 'rxjs/operators';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-login-component',
@@ -22,7 +23,8 @@ export class LoginComponentComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private authenticationService: AuthenticationService
+              private authenticationService: AuthenticationService,
+              private userService: UserService
   ) {
   }
 
@@ -54,6 +56,33 @@ export class LoginComponentComponent implements OnInit {
           console.log(data.token);
           localStorage.setItem('token', data.token);
           this.authentication.emit(true);
+          this.userService.getUserProfile().subscribe(
+            (data) => {
+              console.log('okay');
+              console.log(data);
+              localStorage.setItem('userID', data.result.id);
+              localStorage.setItem('firsName', data.result.firstName);
+
+              /*
+                            this.userService.currentUser = new User(
+                              data.result.firstName,
+                              data.result.lastName,
+                              data.result.email,
+                              data.result.password,
+                              data.result.phoneNumber,
+                              data.result.dateOfBirth
+                            );
+                            this.userService.currentUser.Id = data.result.id;
+                            console.log(this.userService.currentUser.Id);
+              */
+            },
+            (error) => {
+              console.log('error while getting profile.');
+            },
+            () => {
+              console.log('done');
+            }
+          );
         },
         error => {
           this.wrongCred = true;

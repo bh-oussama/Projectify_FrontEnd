@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ProjectService} from '../project.service';
 
 @Component({
   selector: 'app-projects-component',
@@ -7,11 +8,25 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
   bShowProjectCreationPopup = false;
+  projects = [];
 
-  constructor() {
+  constructor(
+    private projectService: ProjectService
+  ) {
   }
 
   ngOnInit() {
+    this.projectService.getAllProjects(localStorage.getItem('userID')).subscribe(
+      (data) => {
+        this.projects = data.result;
+      },
+      (error) => {
+        console.log('error while getting profile.');
+      },
+      () => {
+        console.log('done');
+      }
+    );
   }
 
   displayProjectCreationPopup(state = true) {

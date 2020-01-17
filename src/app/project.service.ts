@@ -26,13 +26,22 @@ export class ProjectService {
   ) {
   }
 
-  addProject(projectForm: FormGroup) {
+  addProject(projectForm: FormGroup, userID: string) {
     const p = new Project(
       projectForm.value.projectName,
       projectForm.value.projectDescription,
       projectForm.value.projectState,
       projectForm.value.projectDate
     );
-    return this.http.post<any>(Config.apiUrl + '/admin/createproject', p);
+    console.log(userID);
+    return this.http.post<any>(Config.apiUrl + '/admin/createproject?userID=' + userID, p);
+  }
+
+  getAllProjects(userID: string) {
+    return this.http.get(Config.apiUrl + '/admin/getprojectsperuser?userID=' + userID);
+  }
+
+  getProject(projectID: string) {
+    return this.http.get(Config.apiUrl + '/admin/getproject?projectID=' + projectID);
   }
 }

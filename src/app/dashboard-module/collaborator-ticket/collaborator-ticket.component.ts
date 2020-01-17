@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CollaboratorModel} from '../../models/Collaborator.model';
 
 @Component({
@@ -8,13 +8,14 @@ import {CollaboratorModel} from '../../models/Collaborator.model';
 })
 export class CollaboratorTicketComponent implements OnInit {
 
-  data: CollaboratorModel;
+  @Input('data') data;
+  // data: CollaboratorModel;
 
   constructor() {
   }
 
   ngOnInit() {
-    this.data = new CollaboratorModel();
-    this.data.name = 'some random name';
+    // this.data = new CollaboratorModel();
+    // this.data.name = 'some random name';
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Config} from '../Shared/Config';
 import {User} from '../../models/user';
@@ -9,10 +9,11 @@ import {User} from '../../models/user';
 export class UserService {
   currentUser: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getUserProfile() {
-    return this.http.get(Config.apiUrl + '/authentication/userProfile');
+    return this.http.get(Config.apiUrl + '/user/getprofile');
   }
 
   LoggedIn(): boolean {

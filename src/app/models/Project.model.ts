@@ -1,6 +1,7 @@
-import {SprintModel} from './Sprint.model';
 
 export class ProjectModel {
+  public projectID: string;
+
   constructor(
     public   name = '',
     public   description = '',
@@ -9,6 +10,4 @@ export class ProjectModel {
     public   sprints = []
   ) {
   }
-
-
 }

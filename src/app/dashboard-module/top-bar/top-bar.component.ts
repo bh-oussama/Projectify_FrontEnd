@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { NotificationModel } from "../../models/Notification.model";
-import { ProjectModel } from "../../models/Project.model";
+import {Component, Input, OnInit} from '@angular/core';
+import {NotificationModel} from '../../models/Notification.model';
+import {ProjectService} from '../../project.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: "app-top-bar",
@@ -8,40 +9,41 @@ import { ProjectModel } from "../../models/Project.model";
   styleUrls: ["./top-bar.component.css"]
 })
 export class TopBarComponent implements OnInit {
-  @Input() projectName = "";
+  @Input('projectName') projectName;
   bShowNotifications = false;
   bShowProjects = false;
   notifications = [];
   notif = new NotificationModel();
   projects = [];
-  proj = new ProjectModel();
 
-  constructor() {}
+  constructor(
+    private projectService: ProjectService,
+    private router: Router
+  ) {
+  }
 
   ngOnInit() {
-    this.notif.content = "some notification content.";
+    this.notif.content = 'no notification to display.';
     this.notifications = [
-      this.notif,
-      this.notif,
-      this.notif,
-      this.notif,
-      this.notif,
       this.notif
     ];
 
-    this.proj.name = "some project";
-    this.projects = [
-      this.proj,
-      this.proj,
-      this.proj,
-      this.proj,
-      this.proj,
-      this.proj,
-      this.proj,
-      this.proj
-    ];
+    this.projectService.getAllProjects(localStorage.getItem('userID')).subscribe(
+      (data) => {
+        this.projects = data.result;
+        console.log('projects downloaded: ' + this.projects);
+        console.log(this.projects[0].projectName);
+      },
+      (error) => {
+        console.log('an error occured while gettingp projects');
+      },
+      () => {
+        console.log('done');
+      }
+    );
 
-    document.querySelector("#projects").addEventListener("click", e => {
+
+    document.querySelector('#projects').addEventListener('click', (e) => {
       this.bShowProjects = true;
       this.bShowNotifications = false;
     });

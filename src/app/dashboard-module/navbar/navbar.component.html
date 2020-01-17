@@ -10,27 +10,27 @@
     </div>
   </div>
   <div class="divider"></div>
-  <div class="tab" (click)="this.router.navigate(['dashboard/projects'])">
+  <div class="tab" (click)="this.router.navigate(['dashboard/'+projectID+'/projects'])">
     <img class="icon" src="../../../assets/img/projects.svg">
     <span>Projects</span>
   </div>
   <div class="divider"></div>
-  <div class="tab"  (click)="this.router.navigate(['dashboard/teams'])">
+  <div class="tab" (click)="this.router.navigate(['dashboard/'+projectID+'/teams'])">
     <img class="icon" src="../../../assets/img/team.svg">
     <span>Teams</span>
   </div>
   <div class="divider"></div>
-  <div class="tab"  (click)="this.router.navigate(['dashboard/sprint'])">
-    <img class="icon" src="../../../assets/img/tasks.svg">
+  <div class="tab" (click)="this.router.navigate(['dashboard/'+projectID+'/tasks'])">
+    <img class="icon" src="../../../assets/img/sprint.svg">
     <span>Sprint</span>
   </div>
   <div class="divider"></div>
-  <div class="tab"  (click)="this.router.navigate(['dashboard/tasks'])">
+  <div class="tab" (click)="this.router.navigate(['dashboard/'+projectID+'/sprint'])">
     <img class="icon" src="../../../assets/img/tasks.svg">
     <span>Tasks</span>
   </div>
   <div class="divider"></div>
-  <div class="tab"  (click)="this.router.navigate(['dashboard/discussions'])">
+  <div class="tab" (click)="this.router.navigate(['dashboard/'+projectID+'/discussions'])">
     <img class="icon" src="../../../assets/img/discussions.svg">
     <span>Discussions</span>
   </div>
