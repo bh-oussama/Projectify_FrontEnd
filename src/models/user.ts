@@ -1,23 +1,30 @@
 export class User {
+  FirstName: string;
+  LastName: string;
+  Email: string;
+  Password: string;
+  Id: string;
+  PhoneNumber: string;
+  // imageLink: string;
+  DateOfBirth: string;
+  constructor(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
 
-   firstName: string;
-   lastName: string;
-   email: string;
-  password: string;
-  id: string;
-  phoneNumber: string;
-  imageLink: string;
-  birthday: Date;
-  constructor(firstName: string,
-              LastName: string, email: string, password: string, id: string, phoneNumber: string, imageLink: string, birthday: Date) {
-    this.firstName = firstName;
-    this.lastName = LastName;
-    this.email = email;
-    this.password = password;
-    this.id = id;
-    this.phoneNumber = phoneNumber;
-    this.imageLink = imageLink;
-    this.birthday = birthday;
+    phoneNumber: string,
+    //imageLink: string,
+    dateOfBirth: string
+  ) {
+    this.FirstName = firstName;
+    this.LastName = lastName;
+    this.Email = email;
+    this.Password = password;
+
+    this.PhoneNumber = phoneNumber;
+    // this.imageLink = imageLink;
+    this.DateOfBirth = dateOfBirth;
   }
 
   /* get firstName(): string {

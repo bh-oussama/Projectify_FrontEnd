@@ -1,8 +1,30 @@
-<input
-  #search
-  class="search"
-  type="text"
-  placeholder="Search..."
-  (keydown.enter)="onSearch(search.value)"
-/>
-<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+<div
+  style="background-color: #f7f5f5; padding: 20px; height: 100vh;  width: 100vw;"
+>
+  <div
+    style="width: 90vw; height: fit-content; padding: 20px; background-color: white;"
+  >
+    <input
+      #search
+      class="search"
+      type="text"
+      placeholder="Search..."
+      (keydown.enter)="onSearch(search.value)"
+    />
+
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body overflowFix">
+          <ng2-smart-table
+            [settings]="settings"
+            [source]="data"
+            (deleteConfirm)="onDeleteConfirm($event)"
+            (editConfirm)="onSaveConfirm($event)"
+            (createConfirm)="onCreateConfirm($event)"
+            (update)="onUpdate($event)"
+          ></ng2-smart-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
