@@ -1,0 +1,18 @@
+.container_ {
+  position: fixed;
+  height: 60vh;
+  width: 25vw;
+  left: 15vh;
+  top: 20vh;
+}
+
+.loginButton{
+  position: relative;
+  width: 50%;
+  left: 25%;
+}
+
+h6{
+  font-size: 15px;
+/*color: #888888;*/
+}

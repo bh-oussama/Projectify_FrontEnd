@@ -1,0 +1,18 @@
+<div class="container_">
+  <img class="project_dropdown_icon" src="../../../assets/img/right-arrow.svg" style="margin: -2px 10px 0 0">
+  <div class="project_name">{{this.projectName}}</div>
+  <img id="btn_projects" src="../../../assets/img/arrow_down.svg" class="project_dropdown_icon" alt=""
+       (click)="toggleProjectsDisplay()">
+  <img id="btn_notifications" src="../../../assets/img/notification.svg" class="project_notification_icon" alt=""
+       (click)="toggleNotificationsDisplay()">
+
+  <div id="notif" class="notification_container"
+       [ngClass]="{hidden: !bShowNotifications, scaleuptr: bShowNotifications}">
+    <p id="notif" class="notification" *ngFor="let notification of notifications">{{notification.content}}</p>
+  </div>
+
+  <div id="projects" class="projects_container" [ngClass]="{hidden: !bShowProjects, scaleupvertop: bShowProjects}">
+    <p id="projects" class="project_line" *ngFor="let p of projects">{{p.name}}</p>
+  </div>
+
+</div>

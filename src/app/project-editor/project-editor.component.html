@@ -1,0 +1,22 @@
+<div class="container_">
+  <p class="title">Project creation:</p>
+  <form [formGroup]="projectForm" (ngSubmit)="createProject()">
+    <label for="name">Project name: </label>
+    <input type="text" id="name" name="name" class="form-control"
+           formControlName="projectName">
+    <label for="description">Project description: </label>
+    <input type="text" id="description" name="projectDescription"
+           class="form-control" formControlName="projectDescription">
+    <label for="date">Creation date: </label>
+    <input type="text" id="date" name="projectDate"
+           class="form-control" [value]="currentDate" disabled >
+    <div style="position: relative; padding-bottom: 40px; padding-top: 10px; ">
+      <button type="submit" class="btn btn-success" style="position: absolute; right: 5px">Done</button>
+    </div>
+
+  </form>
+
+  <div style="position: absolute; right: 10px; top: 10px">
+    <img src="../../assets/img/close.svg" style="height: 24px; width: 24px; " (click)="this.close.emit(false)">
+  </div>
+</div>
