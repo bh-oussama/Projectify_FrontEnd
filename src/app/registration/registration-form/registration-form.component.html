@@ -84,6 +84,7 @@
       type="password"
       name="password"
       class="form-control"
+      pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
       [(ngModel)]="password"
       placeholder="Password"
       minlength="8"
@@ -93,6 +94,12 @@
     <div *ngIf="pass.invalid && registrationForm.submitted" class="  message">
       <div *ngIf="pass.errors.required">
         Password is required.
+      </div>
+      <div *ngIf="pass.errors.pattern">
+        <span>
+          password must contain an Uppercase character, a number and a special
+          character.</span
+        >
       </div>
       <div *ngIf="pass.errors.minlength">
         Password must contain at least 8 characters
