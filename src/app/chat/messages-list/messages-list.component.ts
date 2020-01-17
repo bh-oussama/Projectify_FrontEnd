@@ -25,12 +25,12 @@ export class MessagesListComponent implements OnInit {
   divideMessages() {
     var temp: { date: string; messages: Message[] }[] = [];
     this.messages.map((m, i) => {
-      this.dates[i] = m.date;
+      this.dates[i] = m.Date;
     });
     this.dates = [...new Set(this.dates)];
     this.dates.forEach((d, i) => {
       var filtred = this.messages.filter((m, i) => {
-        return m.date == d;
+        return m.Date == d;
       });
 
       temp.push({ date: d, messages: filtred });
@@ -66,8 +66,8 @@ export class MessagesListComponent implements OnInit {
     ];
     this.messages = this.messages.filter(m => {
       return (
-        (m.id_sender === this.receiver && m.id_receiver == this.id) ||
-        (m.id_sender === this.id && m.id_receiver == this.receiver)
+        (m.Id_sender === this.receiver && m.Id_receiver == this.id) ||
+        (m.Id_sender === this.id && m.Id_receiver == this.receiver)
       );
     });
     console.log("hi");

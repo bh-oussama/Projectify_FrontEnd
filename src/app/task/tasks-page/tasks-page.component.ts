@@ -169,9 +169,9 @@ export class TasksPageComponent implements OnInit {
             config: {
               selectText: "Select",
               list: [
-                { value: "0", title: this.taskStates[0] },
-                { value: "1", title: this.taskStates[1] },
-                { value: "2", title: this.taskStates[2] }
+                { value: this.taskStates[0], title: this.taskStates[0] },
+                { value: this.taskStates[1], title: this.taskStates[1] },
+                { value: this.taskStates[2], title: this.taskStates[2] }
               ]
 
               //renderComponent: SprintsSelectorComponent

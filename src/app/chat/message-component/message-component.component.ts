@@ -13,6 +13,6 @@ export class MessageComponentComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.isReceiver = this.id === this.message.id_sender;
+    this.isReceiver = this.id === this.message.Id_sender;
   }
 }
