@@ -15,5 +15,12 @@ export class HomeComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.bIsUserLoggedIn = localStorage.getItem('token') !== undefined;
+    this.currentProject = new ProjectModel();
+    this.currentProject.name = 'Project Z';
+    const sprint = new SprintModel('Sprint name');
+    this.currentProject.sprints = [sprint, sprint, sprint, sprint, sprint, sprint, sprint, sprint, sprint, sprint, sprint];
+    this.username = localStorage.getItem('firstName');
+  }
 }

@@ -5,14 +5,14 @@
       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
     </div>
     <div style="overflow-y: scroll; height: calc(100% - 10px); margin-bottom: 10px">
-      <div *ngFor="let a of [1,2,1,1,1,1,1,1,2,1,1,1,1,1]">
-        <app-collaborator-ticket></app-collaborator-ticket>
+      <div *ngFor="let a of collaborators">
+        <app-collaborator-ticket [data]="a"></app-collaborator-ticket>
       </div>
     </div>
   </div>
   <div class="right_container">
-    <div *ngFor="let a of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
-      <app-team-ticket></app-team-ticket>
+    <div *ngFor="let a of teams">
+      <app-team-ticket [team]="a"></app-team-ticket>
     </div>
   </div>
 </div>

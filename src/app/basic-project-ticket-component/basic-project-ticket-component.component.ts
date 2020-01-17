@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-basic-project-ticket-component',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicProjectTicketComponentComponent implements OnInit {
 
-  constructor() { }
+  @Input('projectName') projectName;
+  @Input('projectDescription') projectDescription;
+  @Input('projectID') projectID;
+
+  constructor(
+    private router: Router
+  ) {
+  }
 
   ngOnInit() {
   }
 
+  navigateToProject() {
+    this.router.navigate(['dashboard/' + this.projectID + '/projects']);
+  }
 }

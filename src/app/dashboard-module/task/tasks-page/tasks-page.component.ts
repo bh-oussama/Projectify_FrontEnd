@@ -1,3 +1,4 @@
+import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
 import { SprintsSelectorComponent } from "../sprints-selector/sprints-selector.component";
 import { Component, OnInit } from "@angular/core";
 import { Ng2SmartTableModule, LocalDataSource } from "ng2-smart-table";
@@ -5,9 +6,9 @@ import { Task } from "src/models/Task";
 import { TasksService } from "src/app/services/tasks.service";
 
 @Component({
-  selector: "app-tasks-page",
-  templateUrl: "./tasks-page.component.html",
-  styleUrls: ["./tasks-page.component.css"]
+  selector: 'app-tasks-page',
+  templateUrl: './tasks-page.component.html',
+  styleUrls: ['./tasks-page.component.css']
 })
 export class TasksPageComponent implements OnInit {
   loading: boolean = false;
@@ -49,8 +50,8 @@ export class TasksPageComponent implements OnInit {
     this.source = new LocalDataSource(this.data);
   }
   onSaveConfirm(event) {
-    var task;
-    var data = event.newData;
+    let task;
+    let data = event.newData;
 
     if (window.confirm("Are you sure you want to save?")) {
       this.loading = true;
@@ -126,9 +127,9 @@ export class TasksPageComponent implements OnInit {
         "add this feature",
         "3",
         this.taskStates[1],
-        "12/12/19",
-        "13/12/19",
-        "2"
+        '12/12/19',
+        '13/12/19',
+        '2'
       ),
       new Task(
         2,
@@ -178,20 +179,20 @@ export class TasksPageComponent implements OnInit {
     ];
     this.source = new LocalDataSource(this.data);
     this.sprintsList = [
-      { value: "1", title: "1" },
-      { value: "2", title: "2" },
-      { value: "3", title: "3" },
-      { value: "4", title: "4" }
+      { value: '1', title: '1' },
+      { value: '2', title: '2' },
+      { value: '3', title: '3' },
+      { value: '4', title: '4' }
     ];
     this.temp = this.data;
     this.settings = {
-      mode: "externel",
+      mode: 'externel',
       defaultStyle: false,
       attr: {
-        class: "responstable" // this is custom table scss or css class for table
+        class: 'responstable' // this is custom table scss or css class for table
       },
       editor: {
-        type: "list"
+        type: 'list'
       },
       pager: {
         display: true,
@@ -212,41 +213,41 @@ export class TasksPageComponent implements OnInit {
         confirmSave: true
       },
       actions: {
-        columnTitle: ""
+        columnTitle: ''
       },
       columns: {
         title: {
-          title: "title",
+          title: 'title',
           filter: false
         },
         priority: {
-          title: "priority",
+          title: 'priority',
           filter: false,
           editor: {
-            type: "list",
+            type: 'list',
             config: {
-              selectText: "Select",
+              selectText: 'Select',
               list: [
-                { value: "1", title: "1" },
-                { value: "2", title: "2" },
-                { value: "3", title: "3" },
-                { value: "4", title: "4" },
-                { value: "5", title: "5" }
+                { value: '1', title: '1' },
+                { value: '2', title: '2' },
+                { value: '3', title: '3' },
+                { value: '4', title: '4' },
+                { value: '5', title: '5' }
               ]
 
-              //renderComponent: SprintsSelectorComponent
+              // renderComponent: SprintsSelectorComponent
             }
           }
         },
         state: {
-          title: "State",
+          title: 'State',
           filter: false,
 
           defaultValue: this.taskService[0],
           editor: {
-            type: "list",
+            type: 'list',
             config: {
-              selectText: "Select",
+              selectText: 'Select',
               list: [
                 { value: this.taskStates[0], title: this.taskStates[0] },
                 { value: this.taskStates[1], title: this.taskStates[1] },
@@ -256,21 +257,21 @@ export class TasksPageComponent implements OnInit {
           }
         },
         started: {
-          title: "started at ",
+          title: 'started at ',
           filter: false
         },
         finished: {
-          title: "finished at ",
+          title: 'finished at ',
           filter: false
         },
         sprint: {
-          title: "sprint",
+          title: 'sprint',
           filter: false,
-          //width:25%,
+          // width:25%,
           editor: {
-            type: "list",
+            type: 'list',
             config: {
-              selectText: "Select",
+              selectText: 'Select',
               list: this.sprintsList
             }
           }

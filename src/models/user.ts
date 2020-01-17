@@ -3,27 +3,23 @@ export class User {
   LastName: string;
   Email: string;
   Password: string;
-  Id: number;
+  Id: string;
   PhoneNumber: string;
-  // imageLink: string;
   DateOfBirth: string;
+
   constructor(
     firstName: string,
     lastName: string,
     email: string,
     password: string,
-
     phoneNumber: string,
-    //imageLink: string,
     dateOfBirth: string
   ) {
     this.FirstName = firstName;
     this.LastName = lastName;
     this.Email = email;
     this.Password = password;
-
     this.PhoneNumber = phoneNumber;
-    // this.imageLink = imageLink;
     this.DateOfBirth = dateOfBirth;
   }
 

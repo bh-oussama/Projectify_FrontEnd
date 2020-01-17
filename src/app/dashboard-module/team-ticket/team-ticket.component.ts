@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-team-ticket',
@@ -6,12 +6,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./team-ticket.component.css']
 })
 export class TeamTicketComponent implements OnInit {
-  name = 'Design';
-  collaborators = [];
+
+  @Input('team') team;
   constructor() {
   }
 
   ngOnInit() {
   }
-
 }

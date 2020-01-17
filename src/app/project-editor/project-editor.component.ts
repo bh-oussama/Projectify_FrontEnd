@@ -2,6 +2,7 @@ import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@a
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {formatDate} from '@angular/common';
 import {ProjectService} from '../project.service';
+import {UserService} from '../services/user.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ProjectEditorComponent implements OnInit {
   @Output() close = new EventEmitter();
 
   constructor(
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private userService: UserService
   ) {
   }
 
@@ -39,7 +41,7 @@ export class ProjectEditorComponent implements OnInit {
 
     this.close.emit(false);
 
-    this.projectService.addProject(this.projectForm).subscribe(
+    this.projectService.addProject(this.projectForm, localStorage.getItem('userID')).subscribe(
       (data) => {
         console.log('okay');
       },

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectModel} from '../models/Project.model';
+import {ActivatedRoute, Params} from '@angular/router';
+import {ProjectService} from '../project.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,10 +11,33 @@ import {ProjectModel} from '../models/Project.model';
 export class DashboardComponent implements OnInit {
   currentProject: ProjectModel;
 
-  constructor() {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private projectService: ProjectService
+  ) {
   }
 
   ngOnInit() {
     this.currentProject = new ProjectModel('Projectify');
+    this.activatedRoute.params.subscribe(
+      (params: Params) => {
+        this.currentProject.projectID = params.id;
+        console.log(params.id);
+      }
+    );
+
+    this.projectService.getProject(this.currentProject.projectID).subscribe(
+      (data) => {
+        console.log(data.result);
+        this.currentProject = data.result;
+        console.log(this.currentProject.projectID);
+      },
+      (error) => {
+        console.log('error while getting profile.');
+      },
+      () => {
+        console.log('done');
+      }
+    );
   }
 }

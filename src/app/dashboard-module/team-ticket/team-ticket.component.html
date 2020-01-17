@@ -1,8 +1,8 @@
 <div class="container_">
-    <p>{{name}}</p>
+    <p>{{team.name}}</p>
     <div class="horizontal_list">
-      <div class="horizontal_element" *ngFor="let a of [1,1,1,1,1,1]">
-        <app-collaborator-ticket></app-collaborator-ticket>
+      <div class="horizontal_element" *ngFor="let a of team.collaborators">
+        <app-collaborator-ticket [data]="a"></app-collaborator-ticket>
       </div>
   </div>
 </div>
