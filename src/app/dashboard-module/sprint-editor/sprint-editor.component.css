@@ -1,0 +1,11 @@
+.container_{
+  position: relative;
+  padding: 10px 20px 10px 20px;
+  background: #e5e5e5;
+  border-radius: 2px;
+}
+
+.title{
+  font-size: 36px;
+  font-weight: bold;
+}

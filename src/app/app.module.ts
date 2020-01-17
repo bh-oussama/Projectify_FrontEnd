@@ -7,7 +7,6 @@ import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { RegistrationFormComponent } from "./registration/registration-form/registration-form.component";
-import { FormsModule } from "@angular/forms";
 import { ChatPageComponent } from "./chat/chat-page/chat-page.component";
 import { ContactListComponent } from "./chat/contact-list/contact-list.component";
 import { GroupCardComponent } from "./chat/group-card/group-card.component";
@@ -22,6 +21,24 @@ import { Ng2OdometerModule } from "ng2-odometer";
 import { GraphComponent } from "./projects/projects-page/graph/graph.component";
 import { ChartsModule } from "ng2-charts";
 import { TeamCardComponent } from "./projects/projects-page/team-card/team-card.component";
+import {LoginFormComponent} from './registration/registration-form/registration-form.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HomeComponent} from './home-component/home.component';
+import {LoginComponentComponent} from './login-component/login-component.component';
+import {ProjectsComponent} from './projects-component/projects.component';
+import {BasicProjectTicketComponentComponent} from './basic-project-ticket-component/basic-project-ticket-component.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import {RouterModule} from '@angular/router';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSliderModule} from '@angular/material';
+import {IgxButtonModule, IgxDragDropModule, IgxGridModule} from 'igniteui-angular';
+import {NgxPopper} from 'angular-popper';
+import {ProjectEditorComponent} from './project-editor/project-editor.component';
+import {UserService} from './Services/user.service';
+import {AuthenticationService} from './Services/authentication.service';
+import {AuthInterceptor} from './authentication/auth.interceptor';
+import {DashboardModule} from './dashboard-module/dashboard.module';
 
 import { SprintsSelectorComponent } from "./task/sprints-selector/sprints-selector.component";
 @NgModule({
@@ -42,6 +59,13 @@ import { SprintsSelectorComponent } from "./task/sprints-selector/sprints-select
     TasksPageComponent,
 
     SprintsSelectorComponent
+    LoginFormComponent,
+    HomeComponent,
+    LoginComponentComponent,
+    ProjectsComponent,
+    BasicProjectTicketComponentComponent,
+    ResetPasswordComponent,
+    ProjectEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +77,28 @@ import { SprintsSelectorComponent } from "./task/sprints-selector/sprints-select
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     ChartsModule
+    RouterModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    IgxGridModule,
+    IgxDragDropModule,
+    IgxButtonModule,
+    NgxPopper,
+    DashboardModule
   ],
   entryComponents: [SprintsSelectorComponent],
-  providers: [],
+  providers: [
+    UserService,
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+
+export class AppModule {
+}

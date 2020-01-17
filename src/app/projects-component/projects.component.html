@@ -1,0 +1,15 @@
+<div>
+  <h6 style="font-family: Roboto; width: auto; float: left; margin: 5px 0 0 10px ">List of Projects:</h6>
+  <button class="btn_add_project btn btn-success" (click)="displayProjectCreationPopup()">New Project</button>
+</div>
+<div style="overflow: hidden; overflow-y: scroll; height: 50vh;width: 365px">
+  <div style="padding: 5px; height: 76px;" *ngFor="let a of [1,2,3,4,1,123,32,2]">
+    <div>
+      <app-basic-project-ticket-component></app-basic-project-ticket-component>
+    </div>
+  </div>
+</div>
+<div class="popup" [ngClass]="{hidden: !bShowProjectCreationPopup}">
+  <app-project-editor (close)="displayProjectCreationPopup(false)"></app-project-editor>
+</div>
+

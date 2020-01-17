@@ -1,0 +1,57 @@
+.container_ {
+  background: #233349;
+  height: 100%;
+  width: 100%;
+}
+
+.icon {
+  float: left;
+  margin: 0 10px 0 10px;
+  height: 24px;
+  width: 24px;
+}
+
+.tab {
+  padding: 20px 5px 20px 5px;
+  display: block;
+  position: relative;
+}
+
+.tab:hover {
+  background: #bbbbbb22;
+}
+
+span {
+  font-size: 42px;
+  color: white;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: #cccccc;
+}
+
+.profile-image {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  border: solid 1px rgba(209, 209, 210, 0.48);
+  float: left;
+}
+
+h5,h6 {
+  color: white;
+}
+
+.right{
+  float: right;
+}
+
+.options{
+  width:  36px;
+  height: 10px;
+  position: absolute;
+  top: 40px;
+  right:5px;
+}
