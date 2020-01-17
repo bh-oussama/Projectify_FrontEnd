@@ -1,0 +1,20 @@
+<div class="container_">
+  <h4>Add a new sprint:</h4>
+  <form [formGroup]="sprintForm" (ngSubmit)="createSprint()">
+    <label for="name">Name</label>
+    <input class="form-control" type="text" formControlName="name" id="name" name="name">
+    <label for="startDate">Starting date:</label>
+    <input class="form-control" type="text" formControlName="startDate" id="startDate" name="startDate">
+    <label for="endDate">Ending date:</label>
+    <input class="form-control" type="text" formControlName="endDate" id="endDate" name="endDate">
+    <div style="position: relative; padding-bottom: 40px; padding-top: 10px; ">
+      <button type="submit" class="btn btn-success" style="padding: 5px 20px 5px 20px; position: absolute; right: 5px">
+        Done
+      </button>
+    </div>
+
+  </form>
+  <div style="position: absolute; right: 10px; top: 10px">
+    <img src="../../../assets/img/close.svg" style="height: 24px; width: 24px; " (click)="this.hide.emit(false)">
+  </div>
+</div>

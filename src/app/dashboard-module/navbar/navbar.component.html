@@ -1,0 +1,38 @@
+<div class="container_">
+  <div>
+    <div class="tab">
+      <img class="icon profile-image" src="../../../assets/img/man.svg">
+      <span style="position: relative;top: -15px">
+        <h5>Username</h5>
+        <h6>Team member</h6>
+      </span>
+      <img class="icon options right" src="../../../assets/img/3Dots.png">
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="tab" (click)="this.router.navigate(['dashboard/projects'])">
+    <img class="icon" src="../../../assets/img/projects.svg">
+    <span>Projects</span>
+  </div>
+  <div class="divider"></div>
+  <div class="tab"  (click)="this.router.navigate(['dashboard/teams'])">
+    <img class="icon" src="../../../assets/img/team.svg">
+    <span>Teams</span>
+  </div>
+  <div class="divider"></div>
+  <div class="tab"  (click)="this.router.navigate(['dashboard/sprint'])">
+    <img class="icon" src="../../../assets/img/tasks.svg">
+    <span>Sprint</span>
+  </div>
+  <div class="divider"></div>
+  <div class="tab"  (click)="this.router.navigate(['dashboard/tasks'])">
+    <img class="icon" src="../../../assets/img/tasks.svg">
+    <span>Tasks</span>
+  </div>
+  <div class="divider"></div>
+  <div class="tab"  (click)="this.router.navigate(['dashboard/discussions'])">
+    <img class="icon" src="../../../assets/img/discussions.svg">
+    <span>Discussions</span>
+  </div>
+  <div class="divider"></div>
+</div>

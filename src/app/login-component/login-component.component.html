@@ -1,0 +1,15 @@
+<div class="container_" style="font-family: Roboto">
+  <h4>Member login:</h4><br>
+  <form [formGroup]="LoginForm" (ngSubmit)="login()">
+    <label for="email">email:</label>
+    <input id="email" name="email" type="text" class="form-control" formControlName="email">
+    <br>
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="password" class="form-control" formControlName="password">
+    <br>
+    <input type="submit" class="form-control loginButton" value="log in">
+  </form>
+  <br>
+  <h6><a [routerLink]="['/resetpassword']" routerLinkActive="active">forgot password?</a></h6>
+  <h6>not a member? <a [routerLink]="register"> register now! </a></h6>
+</div>

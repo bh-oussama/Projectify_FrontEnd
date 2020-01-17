@@ -1,0 +1,31 @@
+.container_ {
+  background: #ffffff;
+  margin: 3px;
+  height: 75px;
+  border: solid rgba(249, 249, 249, 0.83) 1px;
+  border-radius: 2px;
+  padding: 2px;
+  white-space: nowrap;
+  width: auto;
+  position: relative;
+  min-width: 300px;
+}
+
+.img {
+  height: 70px;
+  float: left;
+}
+
+.name {
+  position: absolute;
+  color: black;
+  height: 70px;
+  left: 75px;
+  line-height: 70px;
+  min-width: 100px;
+  width: auto;
+  margin-left: 5px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 20px;
+}

@@ -1,0 +1,16 @@
+<div style="margin: 0 0 20px 20px; background: #579E57" >
+  <h5 style="float: left">Selected sprint: {{sprint.name}}</h5>
+  <div  class="dropdown" style="height: 40px; width: 40px ;margin:20px 0 0 10px; float: left;">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="showDropDown()">
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#" *ngFor="let sprint of sprints">{{sprint.name}}</a>
+    </div>
+  </div>
+  <button style="float: right; margin: 10px 15px 0 0" type="button" class="btn btn-success" (click)="displaySprintEditorPopup(true)">Add new sprint</button>
+</div>
+<app-draggable></app-draggable>
+
+<div class="popup" [ngClass]="{hidden: !bShowSprintEditorPopup}">
+  <app-sprint-editor (hide)="displaySprintEditorPopup(false)"></app-sprint-editor>
+</div>

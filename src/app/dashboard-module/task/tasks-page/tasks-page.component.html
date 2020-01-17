@@ -1,0 +1,38 @@
+<div
+  style="background-color: #f7f5f5; padding: 20px; height: calc(100% - 50px);  width: 100%; align-items: center;"
+>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header " style="color: #1E6BB8;">Tasks</h1>
+    </div>
+  </div>
+  <div
+    style="width: 80vw; height: 80%; padding: 20px; background-color: white;"
+  >
+    <input
+      #search
+      class=" form-control "
+      style="width: 20vw;"
+      type="text"
+      placeholder="Search..."
+      (keydown.enter)="onSearch(search.value)"
+    />
+
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body overflowFix">
+          <ng2-smart-table
+            class=" table table-striped"
+            style="padding-top: 10px;"
+            [settings]="settings"
+            [source]="data"
+            (deleteConfirm)="onDeleteConfirm($event)"
+            (editConfirm)="onSaveConfirm($event)"
+            (createConfirm)="onCreateConfirm($event)"
+            (update)="onUpdate($event)"
+          ></ng2-smart-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

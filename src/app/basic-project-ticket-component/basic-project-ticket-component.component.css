@@ -1,0 +1,34 @@
+.container{
+  position: relative;
+  background: aliceblue;
+  height: 75px;
+  width: 350px;
+  border: solid #55555555 1px;
+  border-radius: 8px;
+}
+
+.icon{
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 5px;
+  left: 5px;
+}
+
+.title{
+  color: black;
+  position: absolute;
+  left: 75px;
+  top: 10px;
+  font-family: Roboto, serif;
+  font-weight: lighter;
+}
+
+.description{
+  position: absolute;
+  font-size: 16px;
+  color: gray;
+  top: 50px;
+  left: 75px;
+  font-family: Roboto, serif;
+}

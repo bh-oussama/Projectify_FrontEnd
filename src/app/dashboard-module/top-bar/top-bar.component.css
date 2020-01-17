@@ -1,0 +1,82 @@
+.container_ {
+  background: #2A4F61;
+  height: 50px;
+  width: 100vw;
+  padding: 10px;
+  position: absolute;
+}
+
+.project_name {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  float: left;
+  font-size: 24px;
+}
+
+.project_dropdown_icon {
+  position: relative;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  float: left;
+  color: gray;
+}
+
+.project_notification_icon {
+  width: 34px;
+  height: 34px;
+  float: left;
+  position: absolute;
+  right: 10px;
+}
+
+.projects_container {
+  z-index: 100;
+  position: absolute;
+  top: 52px;
+  left: 125px;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 2px;
+  background: #777777;
+  border-radius: 10px;
+}
+
+.project_line {
+  margin: 5px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  font-size: 30px;
+  word-break: break-word;
+  width: calc(100% - 8px);
+}
+
+.project_line:hover{
+  background: #cccccc;
+}
+
+.notification_container {
+  position: absolute;
+  z-index: 100;
+  top: 51px;
+  right: 10px;
+  max-width: 400px;
+  border-radius: 5px;
+  background: #4a4a4a;
+  padding: 5px;
+}
+
+.notification {
+  background: #D6D6D6;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 26px;
+  word-break: break-word;
+}
+
+.hidden {
+  display: none;
+}
