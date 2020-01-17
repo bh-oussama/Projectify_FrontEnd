@@ -1,12 +1,18 @@
 <div
-  style="background-color: #f7f5f5; padding: 20px; height: 100vh;  width: 100vw;"
+  style="background-color: #f7f5f5; padding: 20px; height: 100vh;  width: 100vw; align-items: center;"
 >
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header " style="color: #1E6BB8;">Tasks</h1>
+    </div>
+  </div>
   <div
     style="width: 90vw; height: fit-content; padding: 20px; background-color: white;"
   >
     <input
       #search
-      class="search"
+      class=" form-control "
+      style="width: 20vw;"
       type="text"
       placeholder="Search..."
       (keydown.enter)="onSearch(search.value)"
@@ -16,6 +22,8 @@
       <div class="panel panel-default">
         <div class="panel-body overflowFix">
           <ng2-smart-table
+            class=" table table-striped"
+            style="padding-top: 50px;"
             [settings]="settings"
             [source]="data"
             (deleteConfirm)="onDeleteConfirm($event)"

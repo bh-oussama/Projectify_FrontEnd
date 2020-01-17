@@ -92,6 +92,69 @@ export class TasksPageComponent implements OnInit {
         "13/12/19",
         "3"
       ),
+      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
+      new Task(
+        "test this feature",
+        "1",
+        this.taskStates[2],
+        "12/12/19",
+        "13/12/19",
+        "3"
+      ),
+      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
+      new Task(
+        "test this feature",
+        "1",
+        this.taskStates[2],
+        "12/12/19",
+        "13/12/19",
+        "3"
+      ),
+      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
+      new Task(
+        "test this feature",
+        "1",
+        this.taskStates[2],
+        "12/12/19",
+        "13/12/19",
+        "3"
+      ),
+      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
+      new Task(
+        "test this feature",
+        "1",
+        this.taskStates[2],
+        "12/12/19",
+        "13/12/19",
+        "3"
+      ),
+      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
+      new Task(
+        "test this feature",
+        "1",
+        this.taskStates[2],
+        "12/12/19",
+        "13/12/19",
+        "3"
+      ),
+      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
+      new Task(
+        "test this feature",
+        "1",
+        this.taskStates[2],
+        "12/12/19",
+        "13/12/19",
+        "3"
+      ),
+      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
+      new Task(
+        "test this feature",
+        "1",
+        this.taskStates[2],
+        "12/12/19",
+        "13/12/19",
+        "3"
+      ),
       new Task(
         "prepare a Mock up",
         "1",
@@ -136,7 +199,9 @@ export class TasksPageComponent implements OnInit {
 
         confirmSave: true
       },
-
+      actions: {
+        columnTitle: ""
+      },
       columns: {
         title: {
           title: "title",
