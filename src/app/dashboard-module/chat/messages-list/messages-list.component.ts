@@ -1,6 +1,6 @@
 import {element} from 'protractor';
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Message} from '../../../models/message';
+import {Message} from '../../../../models/message';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class MessagesListComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe(param => {
-      this.receiver = param.id;
+      this.receiver = param.get('id');
       this.ngOnInit();
     });
   }

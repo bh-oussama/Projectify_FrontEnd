@@ -1,4 +1,4 @@
-import { SprintsSelectorComponent } from "./../sprints-selector/sprints-selector.component";
+import { SprintsSelectorComponent } from "../sprints-selector/sprints-selector.component";
 import { Component, OnInit } from "@angular/core";
 import { Ng2SmartTableModule, LocalDataSource } from "ng2-smart-table";
 import { Task } from "src/models/Task";

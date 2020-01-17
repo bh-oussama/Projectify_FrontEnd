@@ -6,9 +6,9 @@
 
 .icon {
   float: left;
-  margin: 0 10px 0 10px;
-  height: 24px;
-  width: 24px;
+  margin: 10px 10px 0 10px;
+  height: 35px;
+  width: 35px;
 }
 
 .tab {
@@ -22,7 +22,7 @@
 }
 
 span {
-  font-size: 42px;
+  font-size: 30px;
   color: white;
 }
 
@@ -33,14 +33,19 @@ span {
 }
 
 .profile-image {
+  position:relative;
+  top: -7px;
   height: 75px;
   width: 75px;
   border-radius: 50%;
   border: solid 1px rgba(209, 209, 210, 0.48);
   float: left;
+  margin-top: 0px;
 }
 
 h5,h6 {
+  position: relative;
+  top: 20px;
   color: white;
 }
 

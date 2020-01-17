@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {IgxGridComponent} from 'igniteui-angular';
-import {DATA} from '../Shared/data';
-import {SprintModel} from '../models/Sprint.model';
+import {DATA} from '../../Shared/data';
+import {SprintModel} from '../../models/Sprint.model';
 import * as $ from 'jquery';
 
 enum DragIcon {

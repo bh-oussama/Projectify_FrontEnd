@@ -1,5 +1,5 @@
 <div
-  style="background-color: #f7f5f5; padding: 20px; height: 100vh;  width: 100vw; align-items: center;"
+  style="background-color: #f7f5f5; padding: 20px; height: calc(100% - 50px);  width: 100%; align-items: center;"
 >
   <div class="row">
     <div class="col-lg-12">
@@ -7,7 +7,7 @@
     </div>
   </div>
   <div
-    style="width: 90vw; height: fit-content; padding: 20px; background-color: white;"
+    style="width: 80vw; height: 80%; padding: 20px; background-color: white;"
   >
     <input
       #search
@@ -23,7 +23,7 @@
         <div class="panel-body overflowFix">
           <ng2-smart-table
             class=" table table-striped"
-            style="padding-top: 50px;"
+            style="padding-top: 10px;"
             [settings]="settings"
             [source]="data"
             (deleteConfirm)="onDeleteConfirm($event)"
