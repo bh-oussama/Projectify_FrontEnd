@@ -20,14 +20,18 @@ export class TasksService {
     return this.http.post<any>(
       "https://projectify-hh4.conveyor.cloud/" +
         "admin/createtask" +
-        "/$projectID=" +
-        "5" +
+        "/?projectID=" +
+        "6" +
         "&sprintID=" +
-        "7",
+        "2",
       temp
     );
   }
-  deleteTask(task: Task) {}
+  deleteTask(id: number) {
+    return this.http.delete<any>(
+      "https://localhost:44361/admin/deletetask?taskID=" + id
+    );
+  }
   updateTask(task: Task) {
     var temp = {
       TaskID: task.id,
@@ -36,9 +40,11 @@ export class TasksService {
       TaskDescription: "",
       TaskStartedAt: task.started
     };
+    console.log("hi");
+    console.log(task);
 
     return this.http.post<any>(
-      "https://projectify-hh4.conveyor.cloud/" + "admin/createtask",
+      "https://projectify-hh4.conveyor.cloud/" + "admin/updatetask",
       temp
     );
   }

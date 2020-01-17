@@ -10,6 +10,7 @@ import { TasksService } from "src/app/services/tasks.service";
   styleUrls: ["./tasks-page.component.css"]
 })
 export class TasksPageComponent implements OnInit {
+  loading: boolean = false;
   projectId: string = "1";
   sprintsList: { value: string; title: string }[] = [];
   settings: any;
@@ -20,7 +21,20 @@ export class TasksPageComponent implements OnInit {
   constructor(private taskService: TasksService) {}
   onDeleteConfirm(event) {
     if (window.confirm("Are you sure you want to delete?")) {
-      this.taskService.deleteTask(event.data);
+      this.loading = true;
+      console.log(event);
+      this.taskService.deleteTask(event.data.id).subscribe(
+        resp => {
+          console.log(resp);
+          this.data.splice(this.data.indexOf(event.data), 1);
+          this.source = new LocalDataSource(this.data);
+          this.loading = false;
+        },
+        err => {
+          console.log(err);
+          this.loading = false;
+        }
+      );
     } else {
       event.confirm.reject();
     }
@@ -39,7 +53,9 @@ export class TasksPageComponent implements OnInit {
     var data = event.newData;
 
     if (window.confirm("Are you sure you want to save?")) {
+      this.loading = true;
       task = new Task(
+        data.id,
         data.title,
         data.priority,
         data.state,
@@ -51,8 +67,16 @@ export class TasksPageComponent implements OnInit {
       this.taskService.updateTask(task).subscribe(
         response => {
           console.log(response);
+          this.data.forEach((el, i) => {
+            if (el.id == data.id) {
+              this.data[i] = task;
+            }
+          });
+          this.source = new LocalDataSource(this.data);
+          this.loading = false;
         },
         err => {
+          this.loading = false;
           console.log(err);
         }
       );
@@ -65,7 +89,9 @@ export class TasksPageComponent implements OnInit {
     var task;
     var data = event.newData;
     if (window.confirm("Are you sure you want to create?")) {
+      this.loading = true;
       task = new Task(
+        data.id,
         data.title,
         data.priority,
         this.taskStates[0],
@@ -73,15 +99,18 @@ export class TasksPageComponent implements OnInit {
         "",
         data.sprint
       );
-      this.data.push(task);
-      this.source.prepend(task);
-      this.source = new LocalDataSource(data);
       this.taskService.addTask(task, this.projectId).subscribe(
         response => {
-          console.log(response);
+          console.log(response.taskID);
+          task.setid(response.taskID);
+          console.log(task);
+          this.data.unshift(task);
+          this.source = new LocalDataSource(data);
+          this.loading = false;
         },
         err => {
           console.log(err);
+          this.loading = false;
         }
       );
     } else {
@@ -93,6 +122,7 @@ export class TasksPageComponent implements OnInit {
     this.taskStates = ["Pending", "In Progress", "Done"];
     this.data = [
       new Task(
+        1,
         "add this feature",
         "3",
         this.taskStates[1],
@@ -100,85 +130,50 @@ export class TasksPageComponent implements OnInit {
         "13/12/19",
         "2"
       ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
       new Task(
-        "test this feature",
-        "1",
+        2,
+        "add this feature",
+        "3",
+        this.taskStates[1],
+        "12/12/19",
+        "13/12/19",
+        "2"
+      ),
+      new Task(
+        3,
+        "add this feature",
+        "3",
         this.taskStates[2],
         "12/12/19",
         "13/12/19",
-        "3"
-      ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
-      new Task(
-        "test this feature",
-        "1",
-        this.taskStates[2],
-        "12/12/19",
-        "13/12/19",
-        "3"
-      ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
-      new Task(
-        "test this feature",
-        "1",
-        this.taskStates[2],
-        "12/12/19",
-        "13/12/19",
-        "3"
-      ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
-      new Task(
-        "test this feature",
-        "1",
-        this.taskStates[2],
-        "12/12/19",
-        "13/12/19",
-        "3"
-      ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
-      new Task(
-        "test this feature",
-        "1",
-        this.taskStates[2],
-        "12/12/19",
-        "13/12/19",
-        "3"
-      ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
-      new Task(
-        "test this feature",
-        "1",
-        this.taskStates[2],
-        "12/12/19",
-        "13/12/19",
-        "3"
-      ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
-      new Task(
-        "test this feature",
-        "1",
-        this.taskStates[2],
-        "12/12/19",
-        "13/12/19",
-        "3"
-      ),
-      new Task("remove ", "1", this.taskStates[2], "12/12/19", "13/12/19", "2"),
-      new Task(
-        "test this feature",
-        "1",
-        this.taskStates[2],
-        "12/12/19",
-        "13/12/19",
-        "3"
+        "2"
       ),
       new Task(
-        "prepare a Mock up",
-        "1",
+        4,
+        "add this feature",
+        "3",
         this.taskStates[0],
         "12/12/19",
         "13/12/19",
-        "4"
+        "2"
+      ),
+      new Task(
+        5,
+        "add this feature",
+        "3",
+        this.taskStates[3],
+        "12/12/19",
+        "13/12/19",
+        "2"
+      ),
+      new Task(
+        6,
+        "add this feature",
+        "3",
+        this.taskStates[1],
+        "12/12/19",
+        "13/12/19",
+        "2"
       )
     ];
     this.source = new LocalDataSource(this.data);
@@ -200,7 +195,7 @@ export class TasksPageComponent implements OnInit {
       },
       pager: {
         display: true,
-        perPage: 10
+        perPage: 6
       },
 
       delete: {
@@ -257,8 +252,6 @@ export class TasksPageComponent implements OnInit {
                 { value: this.taskStates[1], title: this.taskStates[1] },
                 { value: this.taskStates[2], title: this.taskStates[2] }
               ]
-
-              //renderComponent: SprintsSelectorComponent
             }
           }
         },
@@ -279,12 +272,11 @@ export class TasksPageComponent implements OnInit {
             config: {
               selectText: "Select",
               list: this.sprintsList
-
-              //renderComponent: SprintsSelectorComponent
             }
           }
         }
       }
     };
+    console.log(this.source);
   }
 }

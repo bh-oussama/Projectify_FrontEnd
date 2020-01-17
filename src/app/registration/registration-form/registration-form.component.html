@@ -1,159 +1,170 @@
-<form
-  #registrationForm="ngForm"
-  (ngSubmit)="onSubmit()"
-  class="text-center border border-light p-5"
+<div
+  style="width: 100%;height: 100%;background-color:  #f7f5f5; align-content: center; padding-top: 2%; padding-bottom: 2%;"
 >
-  <p class="h4 mb-4">Sign up</p>
-  <div class="form-row mb-4">
-    <div class="col">
-      <!-- First name -->
+  <form
+    #registrationForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    class="text-center border border-light p-5"
+    style="border-radius: 20px; background-color: white; width: 45%; margin-left: 27%; "
+  >
+    <p class="h4 mb-4">Sign up</p>
+    <div class="form-row mb-4">
+      <div class="col">
+        <!-- First name -->
+        <input
+          type="text"
+          required
+          minlength="4"
+          id="firstName"
+          name="firstName"
+          class="form-control "
+          [ngClass]="{
+            'is-invalid': fname.errors && registrationForm.submitted
+          }"
+          #fname="ngModel"
+          [(ngModel)]="firstName"
+          placeholder="First name"
+        />
+        <div
+          *ngIf="fname.invalid && registrationForm.submitted"
+          class="  message"
+        >
+          <div *ngIf="fname.errors.required">
+            First Name is required.
+          </div>
+
+          <div *ngIf="fname.errors.minlength">
+            First Name must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <!-- Last name -->
+        <input
+          type="text"
+          required
+          minlength="4"
+          id="lastName"
+          name="lastName"
+          class="form-control "
+          [ngClass]="{
+            'is-invalid': lname.errors && registrationForm.submitted
+          }"
+          #lname="ngModel"
+          [(ngModel)]="lastName"
+          placeholder="Last name"
+        />
+        <div
+          *ngIf="lname.errors && registrationForm.submitted"
+          class="  message"
+        >
+          <div *ngIf="lname.errors.required">
+            Last Name is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- E-mail -->
+    <div class="mb-4">
       <input
         type="text"
-        required
-        minlength="4"
-        id="firstName"
-        name="firstName"
+        name="email"
         class="form-control "
-        [ngClass]="{ 'is-invalid': fname.errors && registrationForm.submitted }"
-        #fname="ngModel"
-        [(ngModel)]="firstName"
-        placeholder="First name"
+        [(ngModel)]="email"
+        placeholder="E-mail"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        #emailaddress="ngModel"
       />
       <div
-        *ngIf="fname.invalid && registrationForm.submitted"
+        *ngIf="emailaddress.invalid && registrationForm.submitted"
         class="  message"
       >
-        <div *ngIf="fname.errors.required">
-          First Name is required.
+        <div *ngIf="emailaddress.errors.required">
+          Email is required.
         </div>
-
-        <div *ngIf="fname.errors.minlength">
-          First Name must be at least 4 characters long.
+        <div *ngIf="emailaddress.errors.pattern">
+          This is not a valid email address.
         </div>
       </div>
     </div>
-    <div class="col">
-      <!-- Last name -->
+    <!-- Password -->
+    <div class="mb-4">
       <input
-        type="text"
+        type="password"
+        name="password"
+        class="form-control"
+        pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+        [(ngModel)]="password"
+        placeholder="Password"
+        minlength="8"
+        #pass="ngModel"
         required
-        minlength="4"
-        id="lastName"
-        name="lastName"
-        class="form-control "
-        [ngClass]="{ 'is-invalid': lname.errors && registrationForm.submitted }"
-        #lname="ngModel"
-        [(ngModel)]="lastName"
-        placeholder="Last name"
       />
-      <div *ngIf="lname.errors && registrationForm.submitted" class="  message">
-        <div *ngIf="lname.errors.required">
-          Last Name is required.
+      <div *ngIf="pass.invalid && registrationForm.submitted" class="  message">
+        <div *ngIf="pass.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="pass.errors.pattern">
+          <span>
+            password must contain an Uppercase character, a number and a special
+            character.</span
+          >
+        </div>
+        <div *ngIf="pass.errors.minlength">
+          Password must contain at least 8 characters
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- E-mail -->
-  <div class="mb-4">
-    <input
-      type="text"
-      name="email"
-      class="form-control "
-      [(ngModel)]="email"
-      placeholder="E-mail"
-      required
-      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-      #emailaddress="ngModel"
-    />
-    <div
-      *ngIf="emailaddress.invalid && registrationForm.submitted"
-      class="  message"
-    >
-      <div *ngIf="emailaddress.errors.required">
-        Email is required.
-      </div>
-      <div *ngIf="emailaddress.errors.pattern">
-        This is not a valid email address.
+    <div class="mb-4">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        [(ngModel)]="confirmPassword"
+        placeholder="Confirm Password"
+        #confirmpass="ngModel"
+        required
+      />
+      <div
+        *ngIf="confirmPassword != password && registrationForm.submitted"
+        class="  message"
+      >
+        <div>
+          The 2 passwords are not identical.
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Password -->
-  <div class="mb-4">
-    <input
-      type="password"
-      name="password"
-      class="form-control"
-      pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-      [(ngModel)]="password"
-      placeholder="Password"
-      minlength="8"
-      #pass="ngModel"
-      required
-    />
-    <div *ngIf="pass.invalid && registrationForm.submitted" class="  message">
-      <div *ngIf="pass.errors.required">
-        Password is required.
-      </div>
-      <div *ngIf="pass.errors.pattern">
-        <span>
-          password must contain an Uppercase character, a number and a special
-          character.</span
-        >
-      </div>
-      <div *ngIf="pass.errors.minlength">
-        Password must contain at least 8 characters
+    <!-- Phone number -->
+    <div class="mb-4">
+      <input
+        type="number"
+        name="phoneNumber"
+        class="form-control mb-4"
+        [(ngModel)]="phoneNumber"
+        placeholder="Phone number"
+        length="8"
+        required
+        #phone="ngModel"
+      />
+      <div
+        *ngIf="phoneNumber.toString().length != 8 && registrationForm.submitted"
+        class="message"
+      >
+        <div>
+          phone number length must be 8 numbers
+        </div>
       </div>
     </div>
-  </div>
-  <div class="mb-4">
     <input
-      type="password"
-      name="password"
-      class="form-control"
-      [(ngModel)]="confirmPassword"
-      placeholder="Confirm Password"
-      #confirmpass="ngModel"
-      required
-    />
-    <div
-      *ngIf="confirmPassword != password && registrationForm.submitted"
-      class="  message"
-    >
-      <div>
-        The 2 passwords are not identical.
-      </div>
-    </div>
-  </div>
-  <!-- Phone number -->
-  <div class="mb-4">
-    <input
-      type="number"
-      name="phoneNumber"
+      type="date"
+      name="birthday"
       class="form-control mb-4"
-      [(ngModel)]="phoneNumber"
-      placeholder="Phone number"
-      length="8"
+      [(ngModel)]="birthday"
       required
-      #phone="ngModel"
     />
-    <div
-      *ngIf="phoneNumber.toString().length != 8 && registrationForm.submitted"
-      class="message"
-    >
-      <div>
-        phone number length must be 8 numbers
-      </div>
-    </div>
-  </div>
-  <input
-    type="date"
-    name="birthday"
-    class="form-control mb-4"
-    [(ngModel)]="birthday"
-    required
-  />
-  <!-- <input
+    <!-- <input
     #imageInput
     type="file"
     accept="image/*"
@@ -161,7 +172,8 @@
     class="form-control mb-4"
   /> -->
 
-  <hr />
-  <button type="submit" class="btn btn-success">Submit</button>
-</form>
-<!-- Default form register -->
+    <hr />
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <!-- Default form register -->
+</div>

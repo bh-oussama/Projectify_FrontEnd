@@ -1,14 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NotificationModel} from '../../models/Notification.model';
-import {ProjectModel} from '../../models/Project.model';
+import { Component, Input, OnInit } from "@angular/core";
+import { NotificationModel } from "../../models/Notification.model";
+import { ProjectModel } from "../../models/Project.model";
 
 @Component({
-  selector: 'app-top-bar',
-  templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.css']
+  selector: "app-top-bar",
+  templateUrl: "./top-bar.component.html",
+  styleUrls: ["./top-bar.component.css"]
 })
 export class TopBarComponent implements OnInit {
-  @Input() projectName = '';
+  @Input() projectName = "";
   bShowNotifications = false;
   bShowProjects = false;
   notifications = [];
@@ -16,11 +16,10 @@ export class TopBarComponent implements OnInit {
   projects = [];
   proj = new ProjectModel();
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.notif.content = 'some notification content.';
+    this.notif.content = "some notification content.";
     this.notifications = [
       this.notif,
       this.notif,
@@ -30,7 +29,7 @@ export class TopBarComponent implements OnInit {
       this.notif
     ];
 
-    this.proj.name = 'some project';
+    this.proj.name = "some project";
     this.projects = [
       this.proj,
       this.proj,
@@ -42,29 +41,32 @@ export class TopBarComponent implements OnInit {
       this.proj
     ];
 
-    document.querySelector('#projects').addEventListener('click', (e) => {
+    document.querySelector("#projects").addEventListener("click", e => {
       this.bShowProjects = true;
       this.bShowNotifications = false;
     });
-    document.querySelector('#notif').addEventListener('click', (e) => {
+    document.querySelector("#notif").addEventListener("click", e => {
       this.bShowNotifications = true;
       this.bShowProjects = false;
     });
 
-    document.addEventListener('click', (e) => {
-      if (e.srcElement.id === 'btn_projects' || e.srcElement.id === 'btn_notifications' ||
-        e.srcElement.id === 'projects' || e.srcElement.id === 'notif'
-      ) {
-        return;
-      }
-      console.log('document clicked');
+    document.addEventListener("click", e => {
+      // if (
+      //   e.target.id === "btn_projects" ||
+      //   e.target.id === "btn_notifications" ||
+      //   e.target.id === "projects" ||
+      //   e.target.id === "notif"
+      // ) {
+      //   return;
+      // }
+      console.log("document clicked");
       this.bShowNotifications = false;
       this.bShowProjects = false;
     });
   }
 
   toggleNotificationsDisplay() {
-    console.log('notifications icon clicked');
+    console.log("notifications icon clicked");
     this.bShowNotifications = !this.bShowNotifications;
   }
 

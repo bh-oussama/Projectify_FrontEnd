@@ -62,7 +62,7 @@ export class RegistrationFormComponent implements OnInit {
       );
       this.registrationService.register(this.user).subscribe(
         response => {
-          console.log(response);
+          this.router.navigate(["/login"]);
         },
         err => {
           console.log(err);

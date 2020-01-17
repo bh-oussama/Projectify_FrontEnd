@@ -1,6 +1,9 @@
+import { ProjectstatisticsService } from "./../../../services/projectstatistics.service";
 import { Component, OnInit } from "@angular/core";
 import { ChartDataSets, ChartOptions } from "chart.js";
 import { Color, BaseChartDirective, Label } from "ng2-charts";
+import { Route } from "@angular/compiler/src/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-projects-page",
@@ -58,10 +61,22 @@ export class ProjectsPageComponent implements OnInit {
   doughnutChartData: number[] = [38, 12, 36, 20];
   doughnutChartType: string = "doughnut";
   pieChartType: string = "pie";
-  constructor() {}
+  constructor(
+    private projectService: ProjectstatisticsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    // events
+    console.log(localStorage.getItem("token"));
+    this.projectService.getProjectInfos("6").subscribe(
+      resp => {
+        console.log(resp);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
   chartHovered(e: any): void {
     console.log(e);

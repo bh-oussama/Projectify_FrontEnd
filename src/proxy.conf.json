@@ -1,7 +1,0 @@
-{
-  "**": {
-    "target": "https://projectify-hh4.conveyor.cloud",
-    "secure": false,
-    "logLevel": "debug"
-  }
-}
