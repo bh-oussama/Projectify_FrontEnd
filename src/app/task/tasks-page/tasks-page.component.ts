@@ -1,8 +1,6 @@
-import { SprintsSelectorComponent } from "./../sprints-selector/sprints-selector.component";
 import { Component, OnInit } from "@angular/core";
 import { Ng2SmartTableModule, LocalDataSource } from "ng2-smart-table";
 import { Task } from "src/models/Task";
-import { htmlAstToRender3Ast } from "@angular/compiler/src/render3/r3_template_transform";
 import { TasksService } from "src/app/services/tasks.service";
 
 @Component({
@@ -11,6 +9,7 @@ import { TasksService } from "src/app/services/tasks.service";
   styleUrls: ["./tasks-page.component.css"]
 })
 export class TasksPageComponent implements OnInit {
+  projectId: string = "1";
   sprintsList: { value: string; title: string }[] = [];
   settings: any;
   data: Task[];
@@ -48,7 +47,14 @@ export class TasksPageComponent implements OnInit {
         data.sprint
       );
       //TO-DO : Implement this
-      this.taskService.updateTask(task);
+      this.taskService.updateTask(task).subscribe(
+        response => {
+          console.log(response);
+        },
+        err => {
+          console.log(err);
+        }
+      );
     } else {
       event.confirm.reject();
     }
@@ -61,19 +67,29 @@ export class TasksPageComponent implements OnInit {
       task = new Task(
         data.title,
         data.priority,
-        data.state,
+        this.taskStates[0],
         data.started,
-        data.finished,
+        "",
         data.sprint
       );
-      this.taskService.addTask(task);
+      this.data.push(task);
+      this.source.prepend(task);
+      this.source = new LocalDataSource(data);
+      this.taskService.addTask(task, this.projectId).subscribe(
+        response => {
+          console.log(response);
+        },
+        err => {
+          console.log(err);
+        }
+      );
     } else {
       event.confirm.reject();
     }
   }
 
   ngOnInit() {
-    this.taskStates = ["Done", "In Progress", "Pending"];
+    this.taskStates = ["Pending", "In Progress", "Done"];
     this.data = [
       new Task(
         "add this feature",
@@ -229,6 +245,8 @@ export class TasksPageComponent implements OnInit {
         state: {
           title: "State",
           filter: false,
+
+          defaultValue: this.taskService[0],
           editor: {
             type: "list",
             config: {

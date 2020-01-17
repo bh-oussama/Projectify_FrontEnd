@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { TasksPageComponent } from "./task/tasks-page/tasks-page.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -22,7 +22,6 @@ import { Ng2OdometerModule } from "ng2-odometer";
 import { GraphComponent } from "./projects/projects-page/graph/graph.component";
 import { ChartsModule } from "ng2-charts";
 import { TeamCardComponent } from "./projects/projects-page/team-card/team-card.component";
-
 import { SprintsSelectorComponent } from "./task/sprints-selector/sprints-selector.component";
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { SprintsSelectorComponent } from "./task/sprints-selector/sprints-select
     GraphComponent,
     TeamCardComponent,
     TasksPageComponent,
-
     SprintsSelectorComponent
   ],
   imports: [
@@ -54,7 +52,7 @@ import { SprintsSelectorComponent } from "./task/sprints-selector/sprints-select
     NgMultiSelectDropDownModule.forRoot(),
     ChartsModule
   ],
-  entryComponents: [SprintsSelectorComponent],
+
   providers: [],
   bootstrap: [AppComponent]
 })

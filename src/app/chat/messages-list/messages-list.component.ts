@@ -17,7 +17,7 @@ export class MessagesListComponent implements OnInit {
   dates: string[];
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe(param => {
-      this.receiver = param.params["id"];
+      this.receiver = param["params"].id;
       this.ngOnInit();
     });
   }
