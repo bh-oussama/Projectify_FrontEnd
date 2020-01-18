@@ -1,3 +1,4 @@
+import { Config } from "./../Shared/Config";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
@@ -7,8 +8,15 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class TasksService {
-  constructor(private http: HttpClient, private router: Router) {}
-  getTasks() {}
+  url: string;
+  constructor(private http: HttpClient, private router: Router) {
+    this.url = Config.apiUrl + "/";
+  }
+  getTasks(projectID: number) {
+    return this.http.get<any>(
+      this.url + "admin/gettasks?projectID=" + projectID
+    );
+  }
   addTask(task: Task, projectId: string) {
     var temp = {
       TaskName: task.title,
@@ -18,19 +26,17 @@ export class TasksService {
     };
 
     return this.http.post<any>(
-      "https://projectify-hh4.conveyor.cloud/" +
+      this.url +
         "admin/createtask" +
         "/?projectID=" +
-        "6" +
+        projectId +
         "&sprintID=" +
-        "2",
+        "1",
       temp
     );
   }
   deleteTask(id: number) {
-    return this.http.delete<any>(
-      "https://localhost:44361/admin/deletetask?taskID=" + id
-    );
+    return this.http.delete<any>(this.url + "admin/deletetask?taskID=" + id);
   }
   updateTask(task: Task) {
     var temp = {
@@ -38,14 +44,14 @@ export class TasksService {
       TaskName: task.title,
       TaskPriority: task.priority,
       TaskDescription: "",
-      TaskStartedAt: task.started
+      TaskStartedAt: task.started,
+      TaskState: task.state,
+      TaskEndAt: task.finished,
+      TaskSprintID: task.sprint
     };
     console.log("hi");
     console.log(task);
 
-    return this.http.post<any>(
-      "https://projectify-hh4.conveyor.cloud/" + "admin/updatetask",
-      temp
-    );
+    return this.http.post<any>(this.url + "admin/updatetask", temp);
   }
 }

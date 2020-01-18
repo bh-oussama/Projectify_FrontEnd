@@ -29,4 +29,9 @@
     >
   </h6>
   <h6>not a member? <a [routerLink]="['/register']"> register now! </a></h6>
+  <ngx-loading
+    style=""
+    [show]="loader"
+    [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>
 </div>

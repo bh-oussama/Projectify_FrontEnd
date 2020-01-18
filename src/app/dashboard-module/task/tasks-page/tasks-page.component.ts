@@ -1,31 +1,33 @@
-import {htmlAstToRender3Ast} from '@angular/compiler/src/render3/r3_template_transform';
-import {SprintsSelectorComponent} from '../sprints-selector/sprints-selector.component';
-import {Component, OnInit} from '@angular/core';
-import {Ng2SmartTableModule, LocalDataSource} from 'ng2-smart-table';
-import {Task} from 'src/models/Task';
-import {TasksService} from 'src/app/services/tasks.service';
+import { ProjectstatisticsService } from "./../../../services/projectstatistics.service";
+import { Component, OnInit } from "@angular/core";
+import { LocalDataSource, ServerDataSource } from "ng2-smart-table";
+import { Task } from "src/models/Task";
+import { TasksService } from "src/app/services/tasks.service";
 
 @Component({
-  selector: 'app-tasks-page',
-  templateUrl: './tasks-page.component.html',
-  styleUrls: ['./tasks-page.component.css']
+  selector: "app-tasks-page",
+  templateUrl: "./tasks-page.component.html",
+  styleUrls: ["./tasks-page.component.css"]
 })
 export class TasksPageComponent implements OnInit {
   loading: boolean = false;
-  projectId: string = '1';
+  projectId: string = "1";
   sprintsList: { value: string; title: string }[] = [];
   settings: any;
   data: Task[];
   temp: Task[];
-  taskStates = ['Pending', 'In Progress', 'Done'];
+  taskStates = ["Pending", "In Progress", "Done"];
   source: LocalDataSource;
 
-  constructor(private taskService: TasksService) {
-  }
+  constructor(
+    private taskService: TasksService,
+    private projectService: ProjectstatisticsService
+  ) {}
 
   onDeleteConfirm(event) {
-    if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm("Are you sure you want to delete?")) {
       this.loading = true;
+      event.confirm.resolve();
       console.log(event);
       this.taskService.deleteTask(event.data.id).subscribe(
         resp => {
@@ -57,7 +59,7 @@ export class TasksPageComponent implements OnInit {
     let task;
     let data = event.newData;
 
-    if (window.confirm('Are you sure you want to save?')) {
+    if (window.confirm("Are you sure you want to save?")) {
       this.loading = true;
       task = new Task(
         data.id,
@@ -68,6 +70,7 @@ export class TasksPageComponent implements OnInit {
         data.finished,
         data.sprint
       );
+
       //TO-DO : Implement this
       this.taskService.updateTask(task).subscribe(
         response => {
@@ -85,6 +88,7 @@ export class TasksPageComponent implements OnInit {
           console.log(err);
         }
       );
+      event.confirm.resolve();
     } else {
       event.confirm.reject();
     }
@@ -92,8 +96,11 @@ export class TasksPageComponent implements OnInit {
 
   onCreateConfirm(event) {
     var task;
+
+    console.log(event);
+
     var data = event.newData;
-    if (window.confirm('Are you sure you want to create?')) {
+    if (window.confirm("Are you sure you want to create?")) {
       this.loading = true;
       task = new Task(
         data.id,
@@ -101,7 +108,7 @@ export class TasksPageComponent implements OnInit {
         data.priority,
         this.taskStates[0],
         data.started,
-        '',
+        "",
         data.sprint
       );
       this.taskService.addTask(task, this.projectId).subscribe(
@@ -109,93 +116,78 @@ export class TasksPageComponent implements OnInit {
           console.log(response.taskID);
           task.setid(response.taskID);
           console.log(task);
-          this.data.unshift(task);
-          this.source = new LocalDataSource(data);
           this.loading = false;
+          //this.data;
         },
         err => {
           console.log(err);
+
           this.loading = false;
         }
       );
+
+      event.confirm.resolve(task);
     } else {
       event.confirm.reject();
     }
   }
 
   ngOnInit() {
-    this.data = [
-      new Task(
-        1,
-        'Task 1',
-        '3',
-        this.taskStates[1],
-        '12/12/19',
-        '13/12/19',
-        '2'
-      ),
-      new Task(
-        2,
-        'Task 2',
-        '3',
-        this.taskStates[1],
-        '12/12/19',
-        '13/12/19',
-        '2'
-      ),
-      new Task(
-        3,
-        'Task 3',
-        '3',
-        this.taskStates[2],
-        '12/12/19',
-        '13/12/19',
-        '2'
-      ),
-      new Task(
-        4,
-        'Task 4',
-        '3',
-        this.taskStates[0],
-        '12/12/19',
-        '13/12/19',
-        '2'
-      ),
-      new Task(
-        5,
-        'Task 5',
-        '3',
-        this.taskStates[3],
-        '12/12/19',
-        '13/12/19',
-        '2'
-      ),
-      new Task(
-        6,
-        'Task 6',
-        '3',
-        this.taskStates[1],
-        '12/12/19',
-        '13/12/19',
-        '2'
-      )
+    this.data = [];
+    this.sprintsList = [
+      { value: "1", title: "1" },
+      { value: "2", title: "2" },
+      { value: "3", title: "3" },
+      { value: "4", title: "4" }
     ];
     this.source = new LocalDataSource(this.data);
-    this.sprintsList = [
-      {value: '1', title: '1'},
-      {value: '2', title: '2'},
-      {value: '3', title: '3'},
-      {value: '4', title: '4'}
-    ];
+    // this.projectService.getSprints("1").subscribe(
+    //   resp => {
+    //     resp.result.forEach(element => {
+    //       this.sprintsList.push({
+    //         value: element.sprintID,
+    //         title: element.sprintID
+    //       });
+    //     });
+    //   },
+    //   err => {
+    //     console.log(err);
+    //   }
+    // );
+    this.loading = true;
+    this.taskService.getTasks(parseInt(this.projectId)).subscribe(
+      resp => {
+        console.log("hi"), console.log(resp);
+        resp.result.forEach(element => {
+          this.source.prepend(
+            new Task(
+              element.taskID,
+              element.taskName,
+              element.taskPriority,
+              element.taskState,
+              element.taskStartedAt,
+              element.taskEndAt,
+              element.sprintID
+            )
+          );
+        });
+
+        this.source.refresh();
+        this.loading = false;
+      },
+      err => {
+        console.log(err);
+        this.loading = false;
+      }
+    );
+
     this.temp = this.data;
     this.settings = {
-      mode: 'externel',
+      mode: "externel",
       defaultStyle: false,
-      attr: {
-        class: 'responstable' // this is custom table scss or css class for table
-      },
+
       editor: {
-        type: 'list'
+        type: "list"
       },
       pager: {
         display: true,
@@ -216,26 +208,26 @@ export class TasksPageComponent implements OnInit {
         confirmSave: true
       },
       actions: {
-        columnTitle: ''
+        columnTitle: ""
       },
       columns: {
         title: {
-          title: 'title',
+          title: "title",
           filter: false
         },
         priority: {
-          title: 'priority',
+          title: "priority",
           filter: false,
           editor: {
-            type: 'list',
+            type: "list",
             config: {
-              selectText: 'Select',
+              selectText: "Select",
               list: [
-                {value: '1', title: '1'},
-                {value: '2', title: '2'},
-                {value: '3', title: '3'},
-                {value: '4', title: '4'},
-                {value: '5', title: '5'}
+                { value: "1", title: "1" },
+                { value: "2", title: "2" },
+                { value: "3", title: "3" },
+                { value: "4", title: "4" },
+                { value: "5", title: "5" }
               ]
 
               // renderComponent: SprintsSelectorComponent
@@ -243,38 +235,39 @@ export class TasksPageComponent implements OnInit {
           }
         },
         state: {
-          title: 'State',
+          title: "State",
           filter: false,
-
+          addable: false,
           defaultValue: this.taskService[0],
           editor: {
-            type: 'list',
+            type: "list",
             config: {
-              selectText: 'Select',
+              selectText: "Select",
               list: [
-                {value: this.taskStates[0], title: this.taskStates[0]},
-                {value: this.taskStates[1], title: this.taskStates[1]},
-                {value: this.taskStates[2], title: this.taskStates[2]}
+                { value: this.taskStates[0], title: this.taskStates[0] },
+                { value: this.taskStates[1], title: this.taskStates[1] },
+                { value: this.taskStates[2], title: this.taskStates[2] }
               ]
             }
           }
         },
         started: {
-          title: 'started at ',
+          title: "started at ",
           filter: false
         },
         finished: {
-          title: 'finished at ',
-          filter: false
+          title: "finished at ",
+          filter: false,
+          addable: false
         },
         sprint: {
-          title: 'sprint',
+          title: "sprint",
           filter: false,
           // width:25%,
           editor: {
-            type: 'list',
+            type: "list",
             config: {
-              selectText: 'Select',
+              selectText: "Select",
               list: this.sprintsList
             }
           }
