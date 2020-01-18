@@ -10,14 +10,12 @@
 
       <div id="Task-{{newtask.taskID}}" class="card" cdkDrag (cdkDragDropped)="updateTaskState(i,$event,newtask)"
            *ngFor="let newtask of new; let i = index;">
-        <div class="card-header"> {{ newtask.taskName }} </div>
+        <div class="card-header"> {{ newtask.title }} </div>
         <div class="card-body">
           <div class="project">
-            {{ newtask.taskDescription}}
+            {{ newtask.started}}
           </div>
-          <div class="TaskIconContainer {{ newtask.taskState }}" id="icon-t{{ newtask.taskID }}">
-            <i class="fas fa-circle fa-xs"></i>
-          </div>
+
           <div class="StatusIndicator new"></div>
         </div>
       </div>
@@ -36,14 +34,12 @@
 
       <div id="Task-{{activetask.taskID}}" class="card" cdkDrag (cdkDragDropped)="updateTaskState(j,$event,activetask)"
            *ngFor="let activetask of active;let j = index">
-        <div class="card-header"> {{ activetask.taskName }} </div>
+        <div class="card-header"> {{ activetask.title }} </div>
         <div class="card-body">
           <div class="project">
-            {{ activetask.taskDescription}}
+            {{ activetask.started}}
           </div>
-          <div class="TaskIconContainer {{ activetask.taskState }} " id="icon-t{{ activetask.taskID }}">
-            <i class="fas fa-circle fa-xs"></i>
-          </div>
+
         </div>
         <div class="StatusIndicator active"></div>
       </div>
@@ -61,14 +57,12 @@
 
       <div id="Task-{{closedtask.taskID}}" class="card" cdkDrag (cdkDragDropped)="updateTaskState(k,$event,closedtask)"
            *ngFor="let closedtask of closed;let k = index">
-        <div class="card-header"> {{ closedtask.taskName }} </div>
+        <div class="card-header"> {{ closedtask.title }} </div>
         <div class="card-body">
           <div class="project">
-            {{ closedtask.taskDescription}}
+            {{ closedtask.started}}
           </div>
-          <div class="TaskIconContainer {{ closedtask.taskState }} " id="icon-t{{ closedtask.taskID }}">
-            <i class="fas fa-circle fa-xs"></i>
-          </div>
+
         </div>
           <div class="StatusIndicator closed"></div>
       </div>

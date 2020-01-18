@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChartDataSets, ChartOptions} from 'chart.js';
 import {Color, BaseChartDirective, Label} from 'ng2-charts';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ProjectstatisticsService } from "./../../../services/projectstatistics.service";
 import { Route } from "@angular/compiler/src/core";
 
@@ -66,10 +66,6 @@ export class ProjectsPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-
-  constructor(
-  ) {
-  }
 
   ngOnInit() {
     console.log(localStorage.getItem("token"));

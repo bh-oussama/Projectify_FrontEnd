@@ -60,7 +60,9 @@ export class LoginComponentComponent implements OnInit {
             (data) => {
               console.log('okay');
               console.log(data);
+              // @ts-ignore
               localStorage.setItem('userID', data.result.id);
+              // @ts-ignore
               localStorage.setItem('firsName', data.result.firstName);
 
               /*

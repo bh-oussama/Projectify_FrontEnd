@@ -1,3 +1,5 @@
+import {Task} from '../../models/Task';
+
 export const DATA = [
   // tslint:disable:max-line-length
   {
@@ -95,4 +97,54 @@ export const TEAMS = [
       }
     ]
   }
+];
+
+export const taskStates = ['Pending', 'In Progress', 'Done'];
+
+export const TASKS = [
+  new Task(
+    2,
+    'add this feature',
+    '3',
+    taskStates[1],
+    '12/12/19',
+    '13/12/19',
+    '2'
+  ),
+  new Task(
+    3,
+    'add this feature',
+    '3',
+    taskStates[2],
+    '12/12/19',
+    '13/12/19',
+    '2'
+  ),
+  new Task(
+    4,
+    'add this feature',
+    '3',
+    taskStates[0],
+    '12/12/19',
+    '13/12/19',
+    '2'
+  ),
+  new Task(
+    5,
+    'add this feature',
+    '3',
+    taskStates[3],
+    '12/12/19',
+    '13/12/19',
+    '2'
+  ),
+  new Task(
+    6,
+    'add this feature',
+    '3',
+    taskStates[1],
+    '12/12/19',
+    '13/12/19',
+    '2'
+  )
 ];

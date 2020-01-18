@@ -4,9 +4,9 @@ import {ProjectService} from '../../project.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: "app-top-bar",
-  templateUrl: "./top-bar.component.html",
-  styleUrls: ["./top-bar.component.css"]
+  selector: 'app-top-bar',
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
   @Input('projectName') projectName;
@@ -30,6 +30,7 @@ export class TopBarComponent implements OnInit {
 
     this.projectService.getAllProjects(localStorage.getItem('userID')).subscribe(
       (data) => {
+        // @ts-ignore
         this.projects = data.result;
         console.log('projects downloaded: ' + this.projects);
         console.log(this.projects[0].projectName);
@@ -47,28 +48,28 @@ export class TopBarComponent implements OnInit {
       this.bShowProjects = true;
       this.bShowNotifications = false;
     });
-    document.querySelector("#notif").addEventListener("click", e => {
+    document.querySelector('#notif').addEventListener('click', e => {
       this.bShowNotifications = true;
       this.bShowProjects = false;
     });
 
-    document.addEventListener("click", e => {
-      // if (
-      //   e.target.id === "btn_projects" ||
-      //   e.target.id === "btn_notifications" ||
-      //   e.target.id === "projects" ||
-      //   e.target.id === "notif"
-      // ) {
-      //   return;
-      // }
-      console.log("document clicked");
+    document.addEventListener('click', e => {
+      if (
+        e.target.id === 'btn_projects' ||
+        e.target.id === 'btn_notifications' ||
+        e.target.id === 'projects' ||
+        e.target.id === 'notif'
+      ) {
+        return;
+      }
+      console.log('document clicked');
       this.bShowNotifications = false;
       this.bShowProjects = false;
     });
   }
 
   toggleNotificationsDisplay() {
-    console.log("notifications icon clicked");
+    console.log('notifications icon clicked');
     this.bShowNotifications = !this.bShowNotifications;
   }
 

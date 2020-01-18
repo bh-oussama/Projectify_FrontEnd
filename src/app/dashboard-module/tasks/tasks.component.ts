@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {IgxGridComponent} from 'igniteui-angular';
-import {DATA} from '../../Shared/data';
+import {DATA, TASKS} from '../../Shared/data';
 import {SprintModel} from '../../models/Sprint.model';
 import * as $ from 'jquery';
 
@@ -21,7 +21,9 @@ export class TasksComponent implements OnInit {
 
   sprint: SprintModel;
   bShowSprintEditorPopup = false;
-  @Input('sprints') sprints;
+  sprints = [{
+    name: 'Sprint 1'
+  }];
   @ViewChild('sourceGrid', {read: IgxGridComponent, static: true}) public sourceGrid: IgxGridComponent;
   @ViewChild('targetGrid', {read: IgxGridComponent, static: true}) public targetGrid: IgxGridComponent;
 
@@ -29,9 +31,9 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data1 = DATA;
+    this.data1 = TASKS;
     this.data2 = [];
-    this.sprint = new SprintModel('Sprint name.', '01/01/2020', '15/01/2020', []);
+    this.sprint = new SprintModel('Sprint 1', '01/01/2020', '15/01/2020', []);
   }
 
   public onRowDragEnd(args) {

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, CdkDragMove, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {DeveloperService} from '../../developer.service';
 import {TaskModel} from '../../models/Task.model';
+import {TASKS} from '../../Shared/data';
+
 declare var $: any;
 
 @Component({
@@ -10,45 +12,18 @@ declare var $: any;
   styleUrls: ['./draggable.component.css']
 })
 export class DraggableComponent implements OnInit {
-  tasks: TaskModel[] = [];
-  new: TaskModel[] = [];
-  active: TaskModel[] = [];
-  closed: TaskModel[] = [];
+  tasks = [];
+  new = TASKS;
+  active = [];
+  closed = [];
 
-  constructor(private developerService: DeveloperService) {
+  constructor() {
   }
 
   ngOnInit() {
     const task = new TaskModel();
-    task.taskName = 'Task name'
+    task.taskName = 'Task name';
     task.taskDescription = 'Task Description';
-    this.active.push(task);
-    this.active.push(task);
-    this.active.push(task);
-    /* this.developerService.getTasks().subscribe(
-       (data: any) => {
-         this.tasks = data.tasks;
-       },
-       (error) => {
-         console.log(error);
-       },
-       () => {
-         // const keys = Object.keys(this.tasks);
-         for (const elt of this.tasks) {
-           switch (elt.taskState) {
-             case 'New' :
-               this.new.push(elt);
-               break;
-             case 'Active' :
-               this.active.push(elt);
-               break;
-             case 'Closed' :
-               this.closed.push(elt);
-               break;
-           }
-         }
-       }
-     );*/
   }
 
   updateTaskState(index: number, event: CdkDragDrop<TaskModel[]>, task: TaskModel) {
