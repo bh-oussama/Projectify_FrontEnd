@@ -14,6 +14,7 @@ export class RegistrationFormComponent implements OnInit {
     private router: Router,
     private registrationService: RegistrationServiceService
   ) {}
+  loading = false;
   firstName = "";
   lastName = "";
   email = "";
@@ -60,12 +61,15 @@ export class RegistrationFormComponent implements OnInit {
         // this.imageLink,
         this.birthday
       );
+      this.loading = true;
       this.registrationService.register(this.user).subscribe(
         response => {
           this.router.navigate(["/login"]);
+          this.loading = false;
         },
         err => {
           console.log(err);
+          this.loading = false;
         }
       );
     } else {
