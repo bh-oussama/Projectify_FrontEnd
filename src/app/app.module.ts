@@ -42,42 +42,44 @@ import {DashboardModule} from './dashboard-module/dashboard.module';
 import { SprintsSelectorComponent } from './dashboard-module/task/sprints-selector/sprints-selector.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegistrationFormComponent,
-    HomeComponent,
-    LoginComponentComponent,
-    ProjectsComponent,
-    BasicProjectTicketComponentComponent,
-    ResetPasswordComponent,
-    ProjectEditorComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    IgxGridModule,
-    IgxDragDropModule,
-    IgxButtonModule,
-    NgxPopper,
-    DashboardModule
-  ],
-  entryComponents: [SprintsSelectorComponent],
-  providers: [
-    UserService,
-    AuthenticationService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RegistrationFormComponent,
+        HomeComponent,
+        LoginComponentComponent,
+        ProjectsComponent,
+        BasicProjectTicketComponentComponent,
+        ResetPasswordComponent,
+        ProjectEditorComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        RouterModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatSliderModule,
+        IgxGridModule,
+        IgxDragDropModule,
+        IgxButtonModule,
+        NgxPopper,
+        DashboardModule
+    ],
+    entryComponents: [SprintsSelectorComponent],
+    providers: [
+        UserService,
+        AuthenticationService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+    ],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {

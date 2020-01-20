@@ -3,6 +3,7 @@ import {CdkDragDrop, CdkDragMove, CdkDropList, moveItemInArray, transferArrayIte
 import {DeveloperService} from '../../developer.service';
 import {TaskModel} from '../../models/Task.model';
 import {TASKS} from '../../Shared/data';
+import {ProjectService} from '../../project.service';
 
 declare var $: any;
 
@@ -17,7 +18,9 @@ export class DraggableComponent implements OnInit {
   active = [];
   closed = [];
 
-  constructor() {
+  constructor(
+    private projectService: ProjectService
+  ) {
   }
 
   ngOnInit() {
@@ -38,6 +41,7 @@ export class DraggableComponent implements OnInit {
         task.taskState = 'Closed';
         break;
     }
+    this.projectService.setTaskNewState(task.taskID + '', task.taskState).subscribe();
   }
 
   drop(event: CdkDragDrop<TaskModel[]>) {

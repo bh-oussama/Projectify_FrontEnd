@@ -13,7 +13,7 @@
 
   <div id="projects" class="projects_container" [ngClass]="{hidden: !bShowProjects, scaleupvertop: bShowProjects}">
     <p id="projects" class="project_line" *ngFor="let p of projects"
-       (click)="router.navigate(['dashboard/'+p.projectID+'/projects'])">{{p.projectName}} {{p.projectID}}</p>
+       (click)="switchProject(p.projectID)">{{p.projectName}} {{p.projectID}}</p>
   </div>
 
 </div>

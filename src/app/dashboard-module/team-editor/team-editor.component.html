@@ -1,0 +1,19 @@
+<div class="container_">
+  <p class="title">Team creation:</p>
+  <form [formGroup]="teamForm" (ngSubmit)="createTeam()">
+    <label for="teamName">Team name: </label>
+    <input type="text" id="teamName" name="teamName" class="form-control"
+           formControlName="TeamName">
+    <label for="description">Team description: </label>
+    <input type="text" id="description" name="teamDescription"
+           class="form-control" formControlName="TeamDescription">
+    <div style="position: relative; padding-bottom: 40px; padding-top: 10px; ">
+      <button type="submit" class="btn btn-success" style="position: absolute; right: 5px">Done</button>
+    </div>
+
+  </form>
+
+  <div style="position: absolute; right: 10px; top: 10px">
+    <img src="../../../assets/img/close.svg" style="height: 24px; width: 24px; " (click)="this.close.emit(false)">
+  </div>
+</div>

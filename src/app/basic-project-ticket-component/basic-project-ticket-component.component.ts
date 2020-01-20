@@ -21,6 +21,7 @@ export class BasicProjectTicketComponentComponent implements OnInit {
   }
 
   navigateToProject() {
+    localStorage.setItem('projectID', this.projectID);
     this.router.navigate(['dashboard/' + this.projectID + '/projects']);
   }
 }

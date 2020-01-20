@@ -1,5 +1,5 @@
 .container_ {
-  border: solid #1d1a17 1px;
+  border: solid #2f2c28 1px;
   background: #eeeeee;
   padding: 5px 10px 0 5px;
   margin: 0 20px 15px 10px;
@@ -15,12 +15,12 @@
 
 .horizontal_element {
   /*float: left;*/
-  display: inline-block;
+  /*display: inline-block;*/
   width: auto;
 }
 
 p{
   font-weight: bold;
-  font-size: 42px;
+  font-size: 24px;
   margin: 10px;
 }

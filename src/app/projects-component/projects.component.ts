@@ -16,10 +16,13 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.projectService.getAllProjects(localStorage.getItem('userID')).subscribe(
       (data) => {
         // @ts-ignore
         this.projects = data.result;
+        console.log(data);
+        console.log('getProjects:' + this.projects);
       },
       (error) => {
         console.log('error while getting profile.');

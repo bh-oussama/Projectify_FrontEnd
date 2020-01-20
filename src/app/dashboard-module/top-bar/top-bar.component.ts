@@ -76,4 +76,9 @@ export class TopBarComponent implements OnInit {
   toggleProjectsDisplay() {
     this.bShowProjects = !this.bShowProjects;
   }
+
+  switchProject(newProjectID: string) {
+    localStorage.setItem('projectID', newProjectID);
+    this.router.navigate(['dashboard/' + newProjectID + '/projects']);
+  }
 }

@@ -1,18 +1,29 @@
-<div class="container_">
+<div class="container_" cdkDropListGroup>
   <div style="width: 100%; background: black"></div>
   <div class="left_container">
     <div class="active-cyan-4 mb-4">
       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
     </div>
-    <div style="overflow-y: scroll; height: calc(100% - 10px); margin-bottom: 10px">
-      <div *ngFor="let a of collaborators">
-        <app-collaborator-ticket [data]="a"></app-collaborator-ticket>
+    <div style="overflow-y: scroll; height: calc(100% - 10px); margin-bottom: 10px"
+         cdkDropList
+         #t="cdkDropList"
+         [cdkDropListData]="collaborators"
+         (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let a of collaborators" cdkDrag>
+        <app-collaborator-ticket (close)="displayTeamCreationPopup(false)" [data]="a"></app-collaborator-ticket>
       </div>
     </div>
   </div>
-  <div class="right_container">
+  <div class="right_container" >
     <div *ngFor="let a of teams">
       <app-team-ticket [team]="a"></app-team-ticket>
     </div>
   </div>
 </div>
+
+<div class="popup" [ngClass]="{hidden: !bShowTeamCreationPopup}">
+  <app-team-editor (close)="displayTeamCreationPopup(false)"></app-team-editor>
+</div>
+
+<button class="btn btn-success" style="position: absolute; top: 10px;right: 30px" (click)="displayTeamCreationPopup(true)">Add new team</button>

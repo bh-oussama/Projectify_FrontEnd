@@ -6,7 +6,7 @@
 
 .icon {
   float: left;
-  margin: 10px 10px 0 10px;
+  margin: 0 10px 0 10px;
   height: 35px;
   width: 35px;
 }
@@ -22,7 +22,7 @@
 }
 
 span {
-  font-size: 30px;
+  font-size: 20px;
   color: white;
 }
 
@@ -54,9 +54,9 @@ h5,h6 {
 }
 
 .options{
-  width:  36px;
-  height: 10px;
+  width:  24px;
+  height: 6px;
   position: absolute;
-  top: 40px;
+  top: 45px;
   right:5px;
 }
