@@ -31,7 +31,7 @@
     "chart.js": "^2.9.3",
     "font-awesome": "^4.7.0",
     "igniteui-angular": "latest",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jszip": "^3.1.5",
     "mdbootstrap": "^4.11.0",
     "minireset.css": "~0.0.4",
