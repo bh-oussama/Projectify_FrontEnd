@@ -32,7 +32,7 @@
     "font-awesome": "^4.7.0",
     "igniteui-angular": "latest",
     "jquery": "^3.4.1",
-    "jszip": "^3.1.5",
+    "jszip": "^3.8.0",
     "mdbootstrap": "^4.11.0",
     "minireset.css": "~0.0.4",
     "ng-multiselect-dropdown": "^0.2.10",
